@@ -30,7 +30,7 @@ class ChatHistoryViewer extends Component {
                 className='chat-history-viewer-holder'
                 ref={(ref) => { this.div = ref }}
             >
-                {messageHistory.map((message, ind) => <MessageRow key={ind} message={message} />)}
+                {messageHistory.map(message => <MessageRow key={message.dateTime} message={message} />)}
             </div>
         )
     }

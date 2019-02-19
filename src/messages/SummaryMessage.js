@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import store from '../StoreSingleton'
-import { OUTAGE_RECORD_TYPES, demoUserName } from '../OuttrackerTypes'
+import { OUTAGE_RECORD_TYPES, demoUserName, OutageDescriptorPropTypes } from '../OuttrackerTypes'
 
 class SummaryMessage extends Component {
+    static propTypes = {
+        outageId: PropTypes.number.isRequired,
+    }
+
     getPropsWithoutReduxConnect() {
         const state = store.getState()
         const outage = state.outagesById.get(this.props.outageId)
@@ -32,9 +38,9 @@ class SummaryMessage extends Component {
                 </p>
                 <hr />
                 <span>
-                    {outageDescriptors.map((outageDescriptor, ind) => (
+                    {outageDescriptors.map(outageDescriptor => (
                         <DescriptorItem
-                            key={ind}
+                            key={outageDescriptor.dateTime}
                             outageDescriptor={outageDescriptor}
                         />
                     ))}
@@ -53,7 +59,13 @@ const DescriptorItem = ({ outageDescriptor }) => {
     } if (outageDescriptor.type === OUTAGE_RECORD_TYPES.DESCRIBE) {
         return <RecordedDescribe outageDescriptor={outageDescriptor} />
     }
+    return null
 }
+
+DescriptorItem.propTypes = {
+    outageDescriptor: OutageDescriptorPropTypes.isRequired,
+}
+
 
 const RecordedInput = ({ outageDescriptor }) => (
     <div className='descriptor-item'>
@@ -64,6 +76,9 @@ const RecordedInput = ({ outageDescriptor }) => (
         </p>
     </div>
 )
+RecordedInput.propTypes = {
+    outageDescriptor: OutageDescriptorPropTypes.isRequired,
+}
 
 const RecordedDescribe = ({ outageDescriptor }) => (
     <div className='descriptor-item'>
@@ -74,3 +89,6 @@ const RecordedDescribe = ({ outageDescriptor }) => (
         </p>
     </div>
 )
+RecordedDescribe.propTypes = {
+    outageDescriptor: OutageDescriptorPropTypes.isRequired,
+}

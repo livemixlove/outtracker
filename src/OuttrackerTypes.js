@@ -45,6 +45,13 @@ export const OutageDescriptor = Immutable.Record({
     text: null,
 })
 
+export const OutageDescriptorPropTypes = PropTypes.shape({
+    type: PropTypes.number.isRequired,
+    outageId: PropTypes.number.isRequired,
+    dateTime: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+})
+
 export const OutageRecordedInput = Immutable.Record({
     type: OUTAGE_RECORD_TYPES.RECORDED_INPUT,
     outageId: null,
