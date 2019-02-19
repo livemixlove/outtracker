@@ -7,7 +7,7 @@ import store from './StoreSingleton';
 import MessageRelayer from './MessageRelayer';
 import { resetStore } from './OuttrackerActions';
 import BadCommandMessage from './BadCommandMessage';
-import { demoUserName } from './OuttakerActionTypes';
+import { demoUserName } from './OuttrackerTypes';
 import { MESSAGE_STATUS_CODES, dateFormat } from './OuttrackerTypes';
 import StartMessage from './StartMessage';
 import DescribeMessage from './DescribeMessage';

@@ -1,7 +1,7 @@
 import Immutable from 'immutable'
 import moment from 'moment'
 
-import OuttrackerActionTypes from "./OuttakerActionTypes";
+import OuttrackerActionTypes from "./OuttrakerActionTypes";
 import { OuttrackerStateRecord, ChatMessageRecord, dateFormat, OutageRecord, OutageRecordedInput, OutageDescriptor } from './OuttrackerTypes';
 import createReducer from './util/CreateReducer';
 

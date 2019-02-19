@@ -2,6 +2,9 @@ import Immutable from 'immutable'
 
 export const dateFormat = 'LL HH:mm:ss'
 
+export const demoUserName = 'DemoUser'
+export const outtrackerUserName = 'outtracker'
+
 export const MESSAGE_STATUS_CODES = {
     NEUTRAL: 1,
     SUCCESS: 2,

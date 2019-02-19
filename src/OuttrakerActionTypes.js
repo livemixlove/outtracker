@@ -8,7 +8,5 @@ const OuttrackerTypes = {
     'SET_IS_RECORDING_ALL_INPUTS': 'SET_IS_RECORDING_ALL_INPUTS',
 }
 
-export const demoUserName = 'DemoUser'
-export const outtrackerUserName = 'outtracker'
 
 export default OuttrackerTypes

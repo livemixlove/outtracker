@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
 
-import { demoUserName, outtrackerUserName } from './OuttakerActionTypes';
+import { outtrackerUserName } from './OuttrackerTypes';
+import { demoUserName } from './OuttrackerTypes';
 
 import './MessageRow.scss'
 import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';

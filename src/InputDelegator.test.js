@@ -1,8 +1,7 @@
 import MessageRelayer from "./MessageRelayer";
-import { demoUserName } from "./OuttakerActionTypes";
 import store from "./StoreSingleton";
 import { resetStore } from "./OuttrackerActions";
-import { MESSAGE_STATUS_CODES } from "./OuttrackerTypes";
+import { MESSAGE_STATUS_CODES, demoUserName } from "./OuttrackerTypes";
 
 describe('input delegator', () => {
     it('should put any non outtracker message into the history', () => {

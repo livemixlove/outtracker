@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import store from './StoreSingleton';
 import { OUTAGE_RECORD_TYPES } from './OuttrackerTypes';
-import { demoUserName } from './OuttakerActionTypes';
+import { demoUserName } from './OuttrackerTypes';
 
 class SummaryMessage extends Component {
     getPropsWithoutReduxConnect() {

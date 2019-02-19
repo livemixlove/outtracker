@@ -5,7 +5,7 @@ import store from './StoreSingleton'
 import './app.scss'
 import ChatConsole from './ChatConsole';
 import MessageRelayer from './MessageRelayer';
-import { demoUserName } from './OuttakerActionTypes';
+import { demoUserName } from './OuttrackerTypes';
 
 class App extends Component {
     componentDidMount() {
@@ -14,9 +14,8 @@ class App extends Component {
 
     startAppWithResponseFromOuttracker(){
         MessageRelayer.processMessage('@outtracker help', demoUserName)
-        // TODO remove these following lines
+        // uncomment these lines if you want to prepopulate chat
         // MessageRelayer.processMessage('@outtracker start', demoUserName)
-        // // MessageRelayer.processMessage('@outtracker start', demoUserName)
         // MessageRelayer.processMessage('@outtracker describe "asdf hahah"', demoUserName)
         // MessageRelayer.processMessage('@outtracker record', demoUserName)
         // MessageRelayer.processMessage('hello hello', demoUserName)

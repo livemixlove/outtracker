@@ -1,4 +1,5 @@
-import OuttrackerTypes, {demoUserName, outtrackerUserName } from "./OuttakerActionTypes";
+import OuttrackerTypes from "./OuttrakerActionTypes";
+import {demoUserName, outtrackerUserName } from "./OuttrackerTypes";
 import { MESSAGE_STATUS_CODES } from "./OuttrackerTypes";
 import store from "./StoreSingleton";
 

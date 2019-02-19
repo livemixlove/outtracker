@@ -1,7 +1,7 @@
 import OuttrackerResponder from "./OuttrackerResponder";
 import store from './StoreSingleton';
-import OuttrackerTypes, { demoUserName } from './OuttakerActionTypes';
-import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
+import OuttrackerTypes from './OuttrakerActionTypes';
+import { MESSAGE_STATUS_CODES, demoUserName } from './OuttrackerTypes';
 
 
 class GenericUserMessage extends OuttrackerResponder {

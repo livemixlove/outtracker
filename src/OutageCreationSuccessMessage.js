@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { demoUserName } from './OuttakerActionTypes';
+import { demoUserName } from './OuttrackerTypes';
 
 class OutageCreationSuccessMessage extends Component {
     render() {
