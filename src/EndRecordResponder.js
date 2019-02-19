@@ -11,7 +11,7 @@ import EndRecordMessage from './EndRecordMessage';
 
 
 class EndRecordResponder extends OuttrackerResponder {
-    
+    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
 
     getCommand(){
         return 'end_record'
@@ -23,7 +23,7 @@ class EndRecordResponder extends OuttrackerResponder {
 
     postMessage() {
         this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<EndRecordMessage />))
-        return MESSAGE_STATUS_CODES.SUCCESS
+        
     }
 }
 

@@ -52,10 +52,12 @@ export const postFailureMessageFromUser = (message) => (
     }
 )
 export const createOutage = ( outage ) => {
-        return {
-            type: OuttrackerTypes.CREATE_OUTAGE,
-            result: { outage },
-        }
+    const state = store.getState()
+    if(state.currentOutageId) return
+    return {
+        type: OuttrackerTypes.CREATE_OUTAGE,
+        result: { outage },
+    }
 }
 
 export const endCurrentOutage = ( ) => {

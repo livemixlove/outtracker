@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './StoreSingleton'
 import './app.scss'
 import ChatConsole from './ChatConsole';
-import InputDelegator from './InputDelegator';
+import MessageRelayer from './MessageRelayer';
 import { demoUserName } from './OuttakerActionTypes';
 
 class App extends Component {
@@ -13,14 +13,15 @@ class App extends Component {
     }
 
     startAppWithResponseFromOuttracker(){
-        InputDelegator.processInput('@outtracker', demoUserName)
+        MessageRelayer.processMessage('@outtracker', demoUserName)
         // TODO remove these following lines
-        InputDelegator.processInput('@outtracker start', demoUserName)
-        InputDelegator.processInput('@outtracker describe "asdf hahah"', demoUserName)
-        InputDelegator.processInput('@outtracker record', demoUserName)
-        InputDelegator.processInput('hello hello', demoUserName)
-        InputDelegator.processInput('no way no way hey hey', demoUserName)
-        InputDelegator.processInput('@outtracker end', demoUserName)
+        MessageRelayer.processMessage('@outtracker start', demoUserName)
+        // MessageRelayer.processMessage('@outtracker start', demoUserName)
+        MessageRelayer.processMessage('@outtracker describe "asdf hahah"', demoUserName)
+        MessageRelayer.processMessage('@outtracker record', demoUserName)
+        MessageRelayer.processMessage('hello hello', demoUserName)
+        MessageRelayer.processMessage('no way no way hey hey', demoUserName)
+        MessageRelayer.processMessage('@outtracker end', demoUserName)
     }
 
     render() {

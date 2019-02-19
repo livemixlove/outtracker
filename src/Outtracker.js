@@ -20,12 +20,12 @@ class _Outtracker {
     }
 
     takeInputText(input) {
-        this.cleanInput = input.trim().split(' ')[0]
-        this.rawInput = input.trim()
+        this.currentCommand = input.trim().split(' ')[0]
+        this.fullInput = input.trim()
         this.currentCommandExists = this.checkIfCommandExistsAndSetCurrentResponder()
     }
 
-    takeAnyInputText(input){
+    takeInputTextForRecording(input){
         if(store.getState().isRecordingAllInputs) {
             store.dispatch(recordInputToOutage(input))
         }
@@ -36,14 +36,14 @@ class _Outtracker {
         this.currentResponder = null
         this.responseStatus = MESSAGE_STATUS_CODES.FAILURE
         this.responders.forEach(responder => {
-            if(this.cleanInput === responder.getCommand()){
+            if(this.currentCommand === responder.getCommand()){
                 this.setCurrentResponder(responder)
                 foundResponder = true
             }
         })
         return foundResponder
     }
-
+    
     setCurrentResponder(responder) {
         this.currentResponder = responder
         this.responseStatus = this.currentResponder.responseStatus
@@ -53,9 +53,11 @@ class _Outtracker {
         let errorProcessingCommand = false
         if(this.currentCommandExists){
             try {
-            this.currentResponder.processInputAndPerformAction(this.rawInput)
-            this.currentResponder.postMessage()
-            } catch {
+                this.currentResponder.processMessageAndPerformAction(this.fullInput)
+                
+                this.currentResponder.postMessage()
+            } catch(e) {
+                console.error(e)
                 errorProcessingCommand = true
             }
         }
@@ -75,11 +77,10 @@ const Outtracker = new _Outtracker(
     [
         new HelloResponder(),
         new StartResponder(), 
+        new EndResponder(), 
         new DescribeResponder(),
         new RecordResponder(),
         new EndRecordResponder(),
-    new EndResponder(), 
-        // new ListResponder(), 
     ]
 )
 

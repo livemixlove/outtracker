@@ -7,7 +7,7 @@ import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
 
 
 class HelloResponder extends OuttrackerResponder {
-    
+    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
 
     getCommand(){
         return ''
@@ -15,7 +15,7 @@ class HelloResponder extends OuttrackerResponder {
 
     postMessage() {
         this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<HelloMessage />))
-        return MESSAGE_STATUS_CODES.SUCCESS
+        
     }
 }
 

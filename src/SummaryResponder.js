@@ -9,7 +9,7 @@ import SummaryMessage from './SummaryMessage';
 
 
 class EndResponder extends OuttrackerResponder {
-    
+    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
     getCommand(){
         return 'end'
     }
@@ -23,7 +23,7 @@ class EndResponder extends OuttrackerResponder {
     postMessage() {
         this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<EndMessage outageId={this.outageId}/>))
         this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<SummaryMessage outageId={this.outageId}/>))
-        return MESSAGE_STATUS_CODES.SUCCESS
+        
     }
 }
 

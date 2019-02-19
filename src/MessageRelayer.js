@@ -3,20 +3,20 @@ import Outtracker from "./Outtracker";
 import GenericUserMessage from "./GenericUserMessage";
 import { MESSAGE_STATUS_CODES } from "./OuttrackerTypes";
 
-class _InputDelegator {
+class _MessageRelayer {
     inputString = null
     genericUserMessage = new GenericUserMessage()
-    processInput(input) {
+    processMessage(input) {
         this.inputString = input
         this.resetResponseStatus()
-        this.sendOuttrackerRawInput()
+        this.sendUnprocessedInputToOuttracker()
         this.getResponseFromOuttrackerIfAny()
         this.postUserMessage()
         this.triggerPostFromOuttrackerIfAny()
     }
 
-    sendOuttrackerRawInput() {
-        Outtracker.takeAnyInputText(this.inputString)
+    sendUnprocessedInputToOuttracker() {
+        Outtracker.takeInputTextForRecording(this.inputString)
     }
 
     resetResponseStatus(){
@@ -48,6 +48,11 @@ class _InputDelegator {
         return (targetUser === 'outtracker')
     }
 
+    inputStringWithoutTarget(){
+        const targetName = this.getTargetUserFromInputString()
+        return this.inputString.replace(`@${targetName}`,'')
+    }
+
     getTargetUserFromInputString() {
         if(!this.inputString) return null
         const trimmedInput = this.inputString.trim()
@@ -58,14 +63,9 @@ class _InputDelegator {
         } else {
             return null
         }
-    }
-
-    inputStringWithoutTarget(){
-        const targetName = this.getTargetUserFromInputString()
-        return this.inputString.replace(`@${targetName}`,'')
-    }
+    } 
 }
 
-const InputDelegator = new _InputDelegator()
+const MessageRelayer = new _MessageRelayer()
 
-export default InputDelegator
+export default MessageRelayer

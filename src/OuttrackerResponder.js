@@ -18,15 +18,13 @@ class OuttrackerResponder {
             commander
                 .command(this.getCommand() + ' ' + this.getArgs())
                 .action(args => {
-                    console.log('Paul C 2019-02-18 args:',args);
                     this.performAction(args)
                 })
         }
     }
 
-    processInputAndPerformAction(inputText){
+    processMessageAndPerformAction(inputText){
         const args = this.turnStringIntoArgs(inputText)
-        console.log('Paul C 2019-02-18 args:',args);
         if(this.hasArgs) {
             commander.parse(args)
         } else {
@@ -47,7 +45,6 @@ class OuttrackerResponder {
     }
 
     turnStringIntoArgs(inputText) {
-        console.log('Paul C 2019-02-18 inputText:',inputText);
         return ['./','./', ...stringArgv(inputText)]
     }
 }

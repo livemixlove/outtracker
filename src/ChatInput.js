@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import $ from 'jquery'
 import {connect} from 'react-redux'
+import $ from 'jquery'
 
 import './ChatInput.scss';
-import InputDelegator from './InputDelegator';
+import MessageRelayer from './MessageRelayer';
 
+const ENTER_KEY = 13
 
 class ChatInput extends Component {
-
     componentDidMount() {
+        this.setupHandleEnterKey()
+    }
+
+    setupHandleEnterKey() {
         $(document).on('keypress',(e) => {
-            if(e.which === 13) {
+            if(e.which === ENTER_KEY) {
                 this.handleSubmit()
                 e.preventDefault()
             }
@@ -18,9 +22,18 @@ class ChatInput extends Component {
     }
 
     handleSubmit = () => {
-        const textValue = $(this.textarea).val()
+        const inputValue = this.getInputValue()
+        MessageRelayer.processMessage(inputValue)
+        this.clearInput()
+    }
+
+    getInputValue() {
+        const value = $(this.textarea).val()
+        return value
+    }
+
+    clearInput() {
         $(this.textarea).val('')
-        InputDelegator.processInput(textValue)
     }
 
     render() {

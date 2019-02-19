@@ -11,6 +11,7 @@ import DescribeMessage from './DescribeMessage';
 
 
 class DescribeResponder extends OuttrackerResponder {
+    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
     
     getCommand(){
         return 'describe'
@@ -28,7 +29,7 @@ class DescribeResponder extends OuttrackerResponder {
     postMessage() {
 
         this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<DescribeMessage text={this.text}/>))
-        return MESSAGE_STATUS_CODES.SUCCESS
+        
     }
 }
 

@@ -13,6 +13,7 @@ class MessageRow extends Component {
         let messageBubble 
         let leftAlign
         if(message.user === demoUserName) {
+            // obviously woudn't hardcode this for a non-demo application
             messageBubble = <UserMessage message={message} />
             leftAlign = true
         } else if ( message.user === outtrackerUserName) {

@@ -6,24 +6,37 @@ import store from './StoreSingleton';
 import { endCurrentOutage, exitRecordMode } from './OuttrackerActions';
 import EndMessage from './EndMessage';
 import SummaryMessage from './SummaryMessage';
-
+import CannotEndMessage from './CannotEndMessage';
 
 class EndResponder extends OuttrackerResponder {
-    
+    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+    canEnd = false
+
     getCommand(){
         return 'end'
     }
 
     performAction() {
         this.outageId = store.getState().currentOutageId
-        store.dispatch(exitRecordMode())
-        store.dispatch(endCurrentOutage())
+        if(this.outageId){
+            this.canEnd = true
+            store.dispatch(exitRecordMode())
+            store.dispatch(endCurrentOutage())
+        } else {
+            this.canEnd = false
+        }
     }
 
     postMessage() {
-        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<EndMessage outageId={this.outageId}/>))
-        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<SummaryMessage outageId={this.outageId}/>))
-        return MESSAGE_STATUS_CODES.SUCCESS
+        if(this.canEnd) {
+            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<EndMessage outageId={this.outageId}/>))
+            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<SummaryMessage outageId={this.outageId}/>))
+        } else {
+            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<CannotEndMessage outageId={this.outageId}/>))
+        }
+    }
+    reset() {
+        this.canEnd = false
     }
 }
 

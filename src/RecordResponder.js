@@ -11,6 +11,7 @@ import StartRecordMessage from './StartRecordMessage';
 
 
 class RecordResponder extends OuttrackerResponder {
+    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
     
     getCommand(){
         return 'record'
@@ -22,7 +23,7 @@ class RecordResponder extends OuttrackerResponder {
 
     postMessage() {
         this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartRecordMessage />))
-        return MESSAGE_STATUS_CODES.SUCCESS
+        
     }
 }
 

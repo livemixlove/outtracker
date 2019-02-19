@@ -30,8 +30,11 @@ class SummaryMessage extends Component {
                 </p>
                 <hr />
                 <span>
-                    {outageDescriptors.map(outageDescriptor => 
-                        <DescriptorItem outageDescriptor={outageDescriptor} />
+                    {outageDescriptors.map((outageDescriptor, ind) => 
+                        <DescriptorItem 
+                            key={ind}
+                            outageDescriptor={outageDescriptor} 
+                        />
                     )}
                 </span>
             </span>
