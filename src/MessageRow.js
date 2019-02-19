@@ -32,7 +32,7 @@ class MessageRow extends Component {
         })
 
         return <div className={'message-row ' +rowClasses}>
-                    <DateTimeForRow dateTimeString={message.dateTime} />
+                    <UserAndDateForRow user={message.user} dateTimeString={message.dateTime} />
                     <div className={'message-row-flex-container ' +rowClasses}>
                         {messageBubble}
                     </div>
@@ -53,8 +53,8 @@ const OuttrackerMessage = ({message}) => (
     </div>
 )
 
-const DateTimeForRow = ({dateTimeString}) => (
+const UserAndDateForRow = ({user, dateTimeString}) => (
     <div className='chat-message-date-time'>
-        {dateTimeString}
+       {user} - {dateTimeString}
     </div>
 )

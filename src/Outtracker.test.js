@@ -100,5 +100,4 @@ describe('outage tracker', () => {
         expect(mostRecentMessage.text).toEqual(endMessage)
         expect(mostRecentMessage.messageStatusCode).toEqual(MESSAGE_STATUS_CODES.SUCCESS)
     })
-
 })
