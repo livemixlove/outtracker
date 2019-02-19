@@ -1,0 +1,37 @@
+.chat-input-holder {
+    position: absolute;
+    width: 100%;
+    height: 18%;
+    bottom: 0;
+    textarea.main-chat-input {
+        position: absolute;
+        resize: none;
+        bottom: 15px;
+        width: 95%;
+        height: 64px;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        border: 1px solid rgb(103, 103, 103);
+        border-radius: 20px;
+        padding-left: 10px;
+        padding-right: 70px;
+    }
+    textarea.main-chat-input {
+        outline: none;
+    }
+    .submit-button {
+        position: absolute;
+        right: 24px;
+        bottom: 34px;
+        background: #1A4FE0;
+        color: white;
+        padding: 5px 3px;
+        font-size: .6em;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.41);
+        -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.41);
+        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.41);
+    }
+}
