@@ -17,10 +17,11 @@ class App extends Component {
         // uncomment these lines if you want to prepopulate chat
         // MessageRelayer.processMessage('@outtracker help', demoUserName)
         // MessageRelayer.processMessage('@outtracker start', demoUserName)
-        // MessageRelayer.processMessage('@outtracker describe "some description of outage"', demoUserName)
-        // MessageRelayer.processMessage('@outtracker record', demoUserName)
+        // MessageRelayer.processMessage('@outtracker record "some description of outage"', demoUserName)
+        // MessageRelayer.processMessage('@outtracker start_record', demoUserName)
         // MessageRelayer.processMessage('hello hello', demoUserName)
         // MessageRelayer.processMessage('great words in a message', demoUserName)
+        // MessageRelayer.processMessage('@outtracker end_record', demoUserName)
         // MessageRelayer.processMessage('@outtracker end', demoUserName)
     }
 

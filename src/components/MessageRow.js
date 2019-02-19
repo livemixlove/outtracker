@@ -50,21 +50,21 @@ class MessageRow extends Component {
 
 export default MessageRow
 
-const UserMessage = ({ message }) => (
+const UserMessage = ({ message }) => (/* eslint-disable */
     <div className='chat-message chat-message-left'>
         <div dangerouslySetInnerHTML={{ __html: message.text }} />
     </div>
-)
+)/* eslint-enable */
 
 UserMessage.propTypes = {
     message: ChatMessagePropTypes.isRequired,
 }
 
-const OuttrackerMessage = ({ message }) => (
+const OuttrackerMessage = ({ message }) => (/* eslint-disable */
     <div className='chat-message chat-message-right'>
         <div dangerouslySetInnerHTML={{ __html: message.text }} />
     </div>
-)
+)/* eslint-enable */
 OuttrackerMessage.propTypes = {
     message: ChatMessagePropTypes.isRequired,
 }

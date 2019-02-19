@@ -58,7 +58,7 @@ const DescriptorItem = ({ outageDescriptor }) => {
 const RecordedInput = ({ outageDescriptor }) => (
     <div className='descriptor-item'>
         <p>
-            <strong>Recorded keystrokes:</strong> <br />
+            <strong>Recorded input:</strong> <br />
             (user: {demoUserName}, {outageDescriptor.dateTime})<br />
             {outageDescriptor.text}
         </p>

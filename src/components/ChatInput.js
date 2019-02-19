@@ -51,6 +51,7 @@ class ChatInput extends Component {
                     wrap='soft'
                     ref={(ref) => { this.textarea = ref }}
                 />
+                {/* eslint-disable */}
                 <span
                     className='submit-button'
                     role='button'
@@ -59,6 +60,7 @@ class ChatInput extends Component {
                 >
                     Submit
                 </span>
+                {/* eslint-enable */}
             </div>
         )
     }
