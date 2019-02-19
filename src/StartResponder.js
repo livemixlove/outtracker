@@ -10,7 +10,7 @@ import { createOutage } from './OuttrackerActions';
 
 
 class StartResponder extends OuttrackerResponder {
-    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+    
     getCommand(){
         return 'start'
     }

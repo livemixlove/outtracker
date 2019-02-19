@@ -11,7 +11,7 @@ import StartRecordMessage from './StartRecordMessage';
 
 
 class RecordResponder extends OuttrackerResponder {
-    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+    
     getCommand(){
         return 'record'
     }

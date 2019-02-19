@@ -18,7 +18,7 @@ class App extends Component {
         InputDelegator.processInput('@outtracker start', demoUserName)
         InputDelegator.processInput('@outtracker describe "asdf hahah"', demoUserName)
         InputDelegator.processInput('@outtracker record', demoUserName)
-        InputDelegator.processInput('hello hello"', demoUserName)
+        InputDelegator.processInput('hello hello', demoUserName)
         InputDelegator.processInput('no way no way hey hey', demoUserName)
         InputDelegator.processInput('@outtracker end', demoUserName)
     }

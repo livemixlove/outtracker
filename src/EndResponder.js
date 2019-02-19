@@ -9,7 +9,7 @@ import SummaryMessage from './SummaryMessage';
 
 
 class EndResponder extends OuttrackerResponder {
-    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+    
     getCommand(){
         return 'end'
     }

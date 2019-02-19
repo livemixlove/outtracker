@@ -7,7 +7,7 @@ import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
 
 
 class HelloResponder extends OuttrackerResponder {
-    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+    
 
     getCommand(){
         return ''

@@ -11,7 +11,7 @@ import DescribeMessage from './DescribeMessage';
 
 
 class DescribeResponder extends OuttrackerResponder {
-    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+    
     getCommand(){
         return 'describe'
     }

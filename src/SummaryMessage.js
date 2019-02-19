@@ -22,16 +22,19 @@ class SummaryMessage extends Component {
             outageDescriptors,
         } = this.getPropsWithoutReduxConnect()
         return (
-            [
-                <p><strong>Outage Summary:</strong></p>,
-                <p><strong>Start Time:</strong> {startTime}</p>,
-                <p><strong>End Time:</strong> {endTime}</p>,
+            <span className='summary-wrapper'>
+                <p>
+                    <span className='summary-title'><strong>Outage Summary</strong></span>
+                    <strong>Start Time:</strong> {startTime}<br />
+                    <strong>End Time:</strong> {endTime}<br />
+                </p>
+                <hr />
                 <span>
                     {outageDescriptors.map(outageDescriptor => 
                         <DescriptorItem outageDescriptor={outageDescriptor} />
                     )}
                 </span>
-            ]
+            </span>
         )
     }
 }
@@ -50,9 +53,9 @@ const DescriptorItem = ({outageDescriptor}) => {
 const RecordedInput = ({outageDescriptor}) => (
     <div className="descriptor-item">
         <p>
-            <strong>Recorded keystrokes:</strong> 
-            (user: {demoUserName}, {outageDescriptor.dateTime}) 
-            &nbsp; {outageDescriptor.text}
+            <strong>Recorded keystrokes:</strong> <br />
+            (user: {demoUserName}, {outageDescriptor.dateTime})<br />
+            {outageDescriptor.text}
         </p>
     </div>
 )
@@ -60,9 +63,9 @@ const RecordedInput = ({outageDescriptor}) => (
 const RecordedDescribe = ({outageDescriptor}) => (
 <div className="descriptor-item">
         <p>
-            <strong>Recorded message:</strong> 
-            (user: {demoUserName}, {outageDescriptor.dateTime}) 
-            &nbsp; {outageDescriptor.text}
+            <strong>Recorded message:</strong> <br />
+            (user: {demoUserName}, {outageDescriptor.dateTime}) <br />
+            {outageDescriptor.text}
         </p>
     </div>
 )
