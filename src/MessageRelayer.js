@@ -1,43 +1,67 @@
 
 import Outtracker from './Outtracker'
 import GenericUserMessage from './messages/GenericUserMessage'
-import { MESSAGE_STATUS_CODES } from './OuttrackerTypes'
+import { MESSAGE_STATUS_CODES, outtrackerUserName } from './OuttrackerTypes'
 
 class _MessageRelayer {
     inputString = null
 
+    recipientName = null
+
+    listenerFunctions = []
+
+    recipient = null
+
     genericUserMessage = new GenericUserMessage()
 
+    // "public" methods
+
     processMessage(input) {
-        // ideally you'd decouple MessageRelayer and Outtracker
-        // probably setting up a something like a "MessageRecipient" abstract class
-        // for any object wanting to recieve messages/commands
+        this.reset()
+        
         this.inputString = input
-        this.resetResponseStatus()
-        this.sendUnprocessedInputToOuttracker()
-        this.getResponseFromOuttrackerIfAny()
+        this.getRecipientFromInput()
+        this.sendUnprocessedInputToListeners()
+        this.getResponseFromRecipientIfAny()
         this.postUserMessage()
-        this.triggerPostFromOuttrackerIfAny()
+        this.triggerPostFromRecipientIfAny()
     }
 
-    sendUnprocessedInputToOuttracker() {
-        Outtracker.takeInputTextForRecording(this.inputString)
+    registerListener(listener) {
+        this.listenerFunctions.push(listener)
     }
 
-    resetResponseStatus() {
+    // "private" methods
+
+    reset() {
+        this.inputString = null
         this.currentResponseStatus = MESSAGE_STATUS_CODES.NEUTRAL
+        this.recipient = null
     }
 
-    getResponseFromOuttrackerIfAny() {
-        if (this.inputIsForOuttracker()) {
-            Outtracker.takeCommandInputText(this.inputStringWithoutTarget())
-            this.currentResponseStatus = Outtracker.getResponseStatus()
+    getRecipientFromInput() {
+        const recipientName = this.getTargetUserFromInputString()
+        if (recipientName === outtrackerUserName) {
+            this.recipient = Outtracker
         }
     }
 
-    triggerPostFromOuttrackerIfAny() {
-        if (this.inputIsForOuttracker()) {
-            Outtracker.performActionAndRespond()
+    sendUnprocessedInputToListeners() {
+        this.listenerFunctions.forEach(
+            listenerFunction => listenerFunction(this.inputString),
+        )
+    }
+
+    getResponseFromRecipientIfAny() {
+        if (this.recipient) {
+            this.recipient.takeCommandInputText(this.inputStringWithoutTarget())
+            this.currentResponseStatus = this.recipient.getResponseStatus()
+        }
+    }
+
+    triggerPostFromRecipientIfAny() {
+        if (this.recipient) {
+            this.recipient.performActionAndRespond()
         }
     }
 
@@ -46,11 +70,6 @@ class _MessageRelayer {
             this.inputString,
             this.currentResponseStatus,
         )
-    }
-
-    inputIsForOuttracker() {
-        const targetUser = this.getTargetUserFromInputString()
-        return (targetUser === 'outtracker')
     }
 
     inputStringWithoutTarget() {
@@ -71,5 +90,9 @@ class _MessageRelayer {
 }
 
 const MessageRelayer = new _MessageRelayer()
+
+MessageRelayer.registerListener(
+    input => Outtracker.takeInputTextForRecording(input),
+)
 
 export default MessageRelayer
