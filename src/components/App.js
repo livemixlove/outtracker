@@ -14,7 +14,7 @@ class App extends Component {
 
     startAppWithResponseFromOuttracker() {
         MessageRelayer.processMessage('@outtracker', demoUserName)
-        // uncomment these lines if you want to prepopulate chat
+        // uncomment these lines if you want to prepopulate chat with examples
         // MessageRelayer.processMessage('@outtracker help', demoUserName)
         // MessageRelayer.processMessage('@outtracker start', demoUserName)
         // MessageRelayer.processMessage('@outtracker record "some description of outage"', demoUserName)
