@@ -12,7 +12,8 @@ class SummaryMessage extends Component {
     getPropsWithoutReduxConnect() {
         const state = store.getState()
         const outage = state.outagesById.get(this.props.outageId)
-        const outageDescriptors = state.outageDescriptorListsByOutageId.get(this.props.outageId).toArray()
+        const outageDescriptorsImm = state.outageDescriptorListsByOutageId.get(this.props.outageId)
+        const outageDescriptors = outageDescriptorsImm ? outageDescriptorsImm.toArray() : []
         return {
             startTime: outage.startTime,
             endTime: outage.endTime,
