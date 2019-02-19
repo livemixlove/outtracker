@@ -25,7 +25,11 @@ const CREATE_OUTAGE = (state,action) => {
     return state
 }
 
-const END_OUTAGE = (state,action) => {
+const END_OUTAGE = (state, action) => {
+    const currentOutageId = state.currentOutageId
+    const endTime = moment().format(dateFormat)
+    state = state.setIn(['outagesById', currentOutageId, 'endTime'], endTime)
+    state = state.set('currentOutageId', null)
     return state
 }
 

@@ -58,6 +58,13 @@ export const createOutage = ( outage ) => {
         }
 }
 
+export const endCurrentOutage = ( ) => {
+    return {
+        type: OuttrackerTypes.END_OUTAGE,
+        result: { },
+    }
+}
+
 export const addDescibeToOutage = ( text ) => {
         return {
             type: OuttrackerTypes.ADD_DESCIBE_TO_OUTAGE,
@@ -70,5 +77,19 @@ export const recordInputToOutage = ( text ) => {
             type: OuttrackerTypes.RECORD_INPUT_TO_OUTAGE,
             result: { text },
         }
+}
+
+export const enterRecordMode = () => {
+    return {
+        type: OuttrackerTypes.SET_IS_RECORDING_ALL_INPUTS,
+        result: { isRecordingAllInputs: true },
+    }
+}
+
+export const exitRecordMode = () => {
+    return {
+        type: OuttrackerTypes.SET_IS_RECORDING_ALL_INPUTS,
+        result: { isRecordingAllInputs: false },
+    }
 }
 

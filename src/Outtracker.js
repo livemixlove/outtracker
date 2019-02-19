@@ -6,6 +6,8 @@ import store from './StoreSingleton';
 import DescribeResponder from './DescribeResponder';
 import RecordResponder from './RecordResponder';
 import EndResponder from './EndResponder';
+import EndRecordResponder from './EndRecordResponder';
+import { recordInputToOutage } from './OuttrackerActions';
 
 
 class _Outtracker {
@@ -25,7 +27,7 @@ class _Outtracker {
 
     takeAnyInputText(input){
         if(store.getState().isRecordingAllInputs) {
-            // ...
+            store.dispatch(recordInputToOutage(input))
         }
     }
 
@@ -48,11 +50,16 @@ class _Outtracker {
     }
  
     performActionAndRespond() {
+        let errorProcessingCommand = false
         if(this.currentCommandExists){
+            try {
             this.currentResponder.processInputAndPerformAction(this.rawInput)
             this.currentResponder.postMessage()
+            } catch {
+                errorProcessingCommand = true
+            }
         }
-        if(!this.currentCommandExists) this.respondToBadCommand()
+        if(!this.currentCommandExists || errorProcessingCommand ) this.respondToBadCommand()
     }
 
     getResponseStatus(){
@@ -70,7 +77,8 @@ const Outtracker = new _Outtracker(
         new StartResponder(), 
         new DescribeResponder(),
         new RecordResponder(),
-        new EndResponder(), 
+        new EndRecordResponder(),
+    new EndResponder(), 
         // new ListResponder(), 
     ]
 )

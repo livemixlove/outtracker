@@ -6,24 +6,25 @@ import OuttrackerResponder from "./OuttrackerResponder";
 import StartMessage from './StartMessage';
 import { MESSAGE_STATUS_CODES, dateFormat } from './OuttrackerTypes';
 import store from './StoreSingleton';
-import { createOutage, enterRecordMode } from './OuttrackerActions';
-import StartRecordMessage from './StartRecordMessage';
+import { createOutage, enterRecordMode, exitRecordMode } from './OuttrackerActions';
+import EndRecordMessage from './EndRecordMessage';
 
 
-class RecordResponder extends OuttrackerResponder {
+class EndRecordResponder extends OuttrackerResponder {
     responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+
     getCommand(){
-        return 'record'
+        return 'end_record'
     }
 
     performAction() {
-        store.dispatch(enterRecordMode())
+        store.dispatch(exitRecordMode())
     }
 
     postMessage() {
-        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartRecordMessage />))
+        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<EndRecordMessage />))
         return MESSAGE_STATUS_CODES.SUCCESS
     }
 }
 
-export default RecordResponder
+export default EndRecordResponder
