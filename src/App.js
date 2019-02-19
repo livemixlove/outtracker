@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 
 import store from './StoreSingleton'
 import './app.scss'
-import ChatConsole from './ChatConsole';
-import MessageRelayer from './MessageRelayer';
-import { demoUserName } from './OuttrackerTypes';
+import ChatConsole from './ChatConsole'
+import MessageRelayer from './MessageRelayer'
+import { demoUserName } from './OuttrackerTypes'
 
 class App extends Component {
     componentDidMount() {
         this.startAppWithResponseFromOuttracker()
     }
 
-    startAppWithResponseFromOuttracker(){
+    startAppWithResponseFromOuttracker() {
         MessageRelayer.processMessage('@outtracker', demoUserName)
         // uncomment these lines if you want to prepopulate chat
         // MessageRelayer.processMessage('@outtracker help', demoUserName)
@@ -29,8 +29,8 @@ class App extends Component {
             <Provider store={store}>
                 <ChatConsole />
             </Provider>
-        );
+        )
     }
 }
 
-export default App;
+export default App

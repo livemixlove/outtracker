@@ -1,27 +1,41 @@
 import React from 'react'
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server'
 
-import OuttrackerResponder from './OuttrackerResponder';
-import { MESSAGE_STATUS_CODES } from '../OuttrackerTypes';
-import store from '../StoreSingleton';
-import { enterRecordMode } from '../OuttrackerActions';
-import StartRecordMessage from '../messages/StartRecordMessage';
+import OuttrackerResponder from './OuttrackerResponder'
+import { MESSAGE_STATUS_CODES } from '../OuttrackerTypes'
+import store from '../StoreSingleton'
+import { enterRecordMode } from '../OuttrackerActions'
+import StartRecordMessage from '../messages/StartRecordMessage'
+import RecordSingleErrorMessage from '../messages/RecordSingleErrorMessage'
 
 
 class RecordResponder extends OuttrackerResponder {
     responseStatus = MESSAGE_STATUS_CODES.SUCCESS
-    
-    getCommand(){
-        return 'record'
+
+    canRecord = false
+
+    getCommand() {
+        return 'start_record'
     }
 
     performAction() {
-        store.dispatch(enterRecordMode())
+        this.outageId = store.getState().currentOutageId
+        if (this.outageId) {
+            this.canRecord = true
+            store.dispatch(enterRecordMode())
+        }
     }
 
     postMessage() {
-        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartRecordMessage />))
-        
+        if (this.canRecord) {
+            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartRecordMessage />))
+        } else {
+            this.postSuccessfulOuttrackerMessage(
+                ReactDOMServer.renderToString(
+                    <RecordSingleErrorMessage text={this.text} />,
+                ),
+            )
+        }
     }
 }
 

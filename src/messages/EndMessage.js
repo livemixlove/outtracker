@@ -4,7 +4,7 @@ class EndMessage extends Component {
     render() {
         return (
             [
-                <p>outtracker has ended the current outage.</p>
+                <p>outtracker has ended the current outage.</p>,
             ]
         )
     }

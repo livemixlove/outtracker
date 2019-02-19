@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import store from '../StoreSingleton';
-import { OUTAGE_RECORD_TYPES, demoUserName} from '../OuttrackerTypes';
+import store from '../StoreSingleton'
+import { OUTAGE_RECORD_TYPES, demoUserName } from '../OuttrackerTypes'
 
 class SummaryMessage extends Component {
     getPropsWithoutReduxConnect() {
@@ -15,7 +15,7 @@ class SummaryMessage extends Component {
     }
 
     render() {
-        const { 
+        const {
             startTime,
             endTime,
             outageDescriptors,
@@ -32,12 +32,12 @@ class SummaryMessage extends Component {
                 </p>
                 <hr />
                 <span>
-                    {outageDescriptors.map((outageDescriptor, ind) => 
-                        <DescriptorItem 
+                    {outageDescriptors.map((outageDescriptor, ind) => (
+                        <DescriptorItem
                             key={ind}
-                            outageDescriptor={outageDescriptor} 
+                            outageDescriptor={outageDescriptor}
                         />
-                    )}
+                    ))}
                 </span>
             </span>
         )
@@ -47,16 +47,16 @@ class SummaryMessage extends Component {
 export default SummaryMessage
 
 
-const DescriptorItem = ({outageDescriptor}) => {
-    if(outageDescriptor.type === OUTAGE_RECORD_TYPES.RECORDED_INPUT){
+const DescriptorItem = ({ outageDescriptor }) => {
+    if (outageDescriptor.type === OUTAGE_RECORD_TYPES.RECORDED_INPUT) {
         return <RecordedInput outageDescriptor={outageDescriptor} />
-    } else if (outageDescriptor.type === OUTAGE_RECORD_TYPES.DESCRIBE) {
+    } if (outageDescriptor.type === OUTAGE_RECORD_TYPES.DESCRIBE) {
         return <RecordedDescribe outageDescriptor={outageDescriptor} />
     }
 }
 
-const RecordedInput = ({outageDescriptor}) => (
-    <div className="descriptor-item">
+const RecordedInput = ({ outageDescriptor }) => (
+    <div className='descriptor-item'>
         <p>
             <strong>Recorded keystrokes:</strong> <br />
             (user: {demoUserName}, {outageDescriptor.dateTime})<br />
@@ -65,8 +65,8 @@ const RecordedInput = ({outageDescriptor}) => (
     </div>
 )
 
-const RecordedDescribe = ({outageDescriptor}) => (
-<div className="descriptor-item">
+const RecordedDescribe = ({ outageDescriptor }) => (
+    <div className='descriptor-item'>
         <p>
             <strong>Recorded message:</strong> <br />
             (user: {demoUserName}, {outageDescriptor.dateTime}) <br />

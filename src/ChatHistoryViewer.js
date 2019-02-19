@@ -20,10 +20,9 @@ class ChatHistoryViewer extends Component {
         return (
             <div
                 className='chat-history-viewer-holder'
-                ref={ref => {this.div = ref}}>
-                {messageHistory.map((message, ind) => {
-                    return <MessageRow key={ind} message={message} />
-                })}
+                ref={(ref) => { this.div = ref }}
+            >
+                {messageHistory.map((message, ind) => <MessageRow key={ind} message={message} />)}
             </div>
         )
     }
@@ -34,5 +33,5 @@ export default ChatHistoryViewer
 
 
 function mapStateToProps(state, props) {
-    return {messageHistory: state.messageHistory.toArray()}
-}   
+    return { messageHistory: state.messageHistory.toArray() }
+}

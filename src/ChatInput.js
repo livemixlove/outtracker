@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import $ from 'jquery'
 
-import './ChatInput.scss';
-import MessageRelayer from './MessageRelayer';
+import './ChatInput.scss'
+import MessageRelayer from './MessageRelayer'
 
 const ENTER_KEY = 13
 
@@ -13,12 +13,12 @@ class ChatInput extends Component {
     }
 
     setupHandleEnterKey() {
-        $(document).on('keypress',(e) => {
-            if(e.which === ENTER_KEY) {
+        $(document).on('keypress', (e) => {
+            if (e.which === ENTER_KEY) {
                 this.handleSubmit()
                 e.preventDefault()
             }
-        });
+        })
     }
 
     handleSubmit = () => {
@@ -41,13 +41,13 @@ class ChatInput extends Component {
         return (
             <div className='chat-input-holder'>
                 {recording && <RecordingIndicator />}
-                <textarea 
+                <textarea
                     className='main-chat-input'
                     wrap='soft'
-                    ref={ ref => this.textarea = ref }
+                    ref={ref => this.textarea = ref}
                 />
-                <span 
-                    className='submit-button' 
+                <span
+                    className='submit-button'
                     onClick={this.handleSubmit}
                 >
                     Submit
@@ -66,8 +66,10 @@ function mapStateToProps(state) {
     }
 }
 
-const RecordingIndicator = ({recording}) => (
+const RecordingIndicator = ({ recording }) => (
     <div className='input-recording-indicator'>
-        <div className='record-icon' /> outtracker is recording all input to current outage history...
-    </div>
+        <div className='record-icon' />
+                {' '}
+outtracker is recording all input to current outage history...
+            </div>
 )

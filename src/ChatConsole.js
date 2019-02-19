@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import './ChatConsole.scss'
-import ChatHistoryViewer from './ChatHistoryViewer';
-import ChatInput from './ChatInput';
+import ChatHistoryViewer from './ChatHistoryViewer'
+import ChatInput from './ChatInput'
 
 class ChatConsole extends Component {
     render() {

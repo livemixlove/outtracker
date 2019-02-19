@@ -1,29 +1,32 @@
 import React from 'react'
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server'
 import moment from 'moment'
 
-import OuttrackerResponder from './OuttrackerResponder';
-import StartMessage from '../messages/StartMessage';
-import { MESSAGE_STATUS_CODES, dateFormat } from '../OuttrackerTypes';
-import store from '../StoreSingleton';
-import { createOutage } from '../OuttrackerActions';
-import NoMultipleOutageMessage from '../messages/NoMultipleOutageMessage';
+import OuttrackerResponder from './OuttrackerResponder'
+import StartMessage from '../messages/StartMessage'
+import { MESSAGE_STATUS_CODES, dateFormat } from '../OuttrackerTypes'
+import store from '../StoreSingleton'
+import { createOutage } from '../OuttrackerActions'
+import NoMultipleOutageMessage from '../messages/NoMultipleOutageMessage'
 
 
 class StartResponder extends OuttrackerResponder {
     responseStatus = MESSAGE_STATUS_CODES.SUCCESS
+
     outage = null
+
     noMultipleWarning = false
-    getCommand(){
+
+    getCommand() {
         return 'start'
     }
 
-    performAction(){
+    performAction() {
         this.outage = {
             startTime: moment().format(dateFormat),
         }
 
-        if(store.getState().currentOutageId){
+        if (store.getState().currentOutageId) {
             this.noMultipleWarning = true
         } else {
             store.dispatch(createOutage(this.outage))
@@ -31,16 +34,16 @@ class StartResponder extends OuttrackerResponder {
     }
 
     postMessage() {
-        if(this.noMultipleWarning){
-            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<NoMultipleOutageMessage outage={this.outage}/>))
+        if (this.noMultipleWarning) {
+            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<NoMultipleOutageMessage outage={this.outage} />))
             this.reset()
         } else {
-            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartMessage outage={this.outage}/>))
+            this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartMessage outage={this.outage} />))
             this.reset()
         }
     }
 
-    reset(){
+    reset() {
         this.outage = null
         this.noMultipleWarning = false
     }

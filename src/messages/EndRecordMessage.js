@@ -4,7 +4,7 @@ class EndRecordMessage extends Component {
     render() {
         return (
             [
-                <p>outtracker has exited record mode.</p>
+                <p>outtracker has exited record mode.</p>,
             ]
         )
     }

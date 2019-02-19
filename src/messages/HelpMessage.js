@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 const helpItems = [
-    {command: 'start', description: 'starts tracking an outage'},
-    {command: 'describe "<message>"', description: 'records a message to an outage'},
-    {command: 'record', description: 'starts recording all input to an outage'},
-    {command: 'end_record', description: 'stops recording input to an outage'},
-    {command: 'end', description: 'ends tracking an outage'},
+    { command: 'start', description: 'starts tracking an outage' },
+    { command: 'record "<message>"', description: 'records a message to an outage' },
+    { command: 'start_record', description: 'starts recording all input to an outage' },
+    { command: 'end_record', description: 'stops recording input to an outage' },
+    { command: 'end', description: 'ends tracking an outage' },
 ]
 
 class HelpMessage extends Component {

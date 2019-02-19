@@ -1,33 +1,35 @@
 import commander from 'commander'
 import stringArgv from 'string-argv'
 
-import store from "../StoreSingleton";
-import { 
-    postSuccessfulOuttrackerMessageFromOuttracker, 
-    postFailureOuttrackerMessageFromOuttracker } from "../OuttrackerActions";
+import store from '../StoreSingleton'
+import {
+    postSuccessfulOuttrackerMessageFromOuttracker,
+    postFailureOuttrackerMessageFromOuttracker,
+} from '../OuttrackerActions'
 
 class OuttrackerResponder {
     hasArgs = false
+
     constructor() {
         // if (this.getCommand === undefined) {
         //     throw new TypeError('Must set a getCommand method')
         // }
         if (this.postMessage === undefined) {
             throw new TypeError('Must set a postMessage method')
-        } 
-        if(this.getArgs && this.getCommand){
+        }
+        if (this.getArgs && this.getCommand) {
             this.hasArgs = true
             commander
                 .command(this.getCommand() + ' ' + this.getArgs())
-                .action(args => {
+                .action((args) => {
                     this.performAction(args)
                 })
         }
     }
 
-    processMessageAndPerformAction(inputText){
+    processMessageAndPerformAction(inputText) {
         const args = this.turnStringIntoArgs(inputText)
-        if(this.hasArgs) {
+        if (this.hasArgs) {
             commander.parse(args)
         } else {
             this.performAction()
@@ -47,7 +49,7 @@ class OuttrackerResponder {
     }
 
     turnStringIntoArgs(inputText) {
-        return ['./','./', ...stringArgv(inputText)]
+        return ['./', './', ...stringArgv(inputText)]
     }
 }
 
