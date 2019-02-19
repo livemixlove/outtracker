@@ -44,6 +44,8 @@ export const OutageRecordedInput = Immutable.Record({
 export const OuttrackerStateRecord = Immutable.Record({
     messageHistory: Immutable.List(),
     outagesById: Immutable.Map(),
-    outageDescriptorListsByOutageId: Immutable.Map(),
+    outageDescriptorListsByOutageId: Immutable.Map(),   
+    isRecordingAllInputs: false,
+    currentOutageId: null,
 })
 

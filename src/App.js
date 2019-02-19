@@ -14,6 +14,9 @@ class App extends Component {
 
     startAppWithResponseFromOuttracker(){
         InputDelegator.processInput('@outtracker', demoUserName)
+        // TODO remove these following lines
+        InputDelegator.processInput('@outtracker start', demoUserName)
+        InputDelegator.processInput('@outtracker describe "asdf hahah"', demoUserName)
     }
 
     render() {

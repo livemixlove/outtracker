@@ -21,8 +21,8 @@ class ChatHistoryViewer extends Component {
             <div
                 className='chat-history-viewer-holder'
                 ref={ref => {this.div = ref}}>
-                {messageHistory.map(message => {
-                    return <MessageRow message={message} />
+                {messageHistory.map((message, ind) => {
+                    return <MessageRow key={ind} message={message} />
                 })}
             </div>
         )

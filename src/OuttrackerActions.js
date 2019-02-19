@@ -1,5 +1,6 @@
 import OuttrackerTypes, {demoUserName, outtrackerUserName } from "./OuttakerActionTypes";
 import { MESSAGE_STATUS_CODES } from "./OuttrackerTypes";
+import store from "./StoreSingleton";
 
 export const resetStore = ( ) => {
     return {
@@ -50,3 +51,24 @@ export const postFailureMessageFromUser = (message) => (
         }
     }
 )
+export const createOutage = ( outage ) => {
+        return {
+            type: OuttrackerTypes.CREATE_OUTAGE,
+            result: { outage },
+        }
+}
+
+export const addDescibeToOutage = ( text ) => {
+        return {
+            type: OuttrackerTypes.ADD_DESCIBE_TO_OUTAGE,
+            result: { text },
+        }
+}
+
+export const recordInputToOutage = ( text ) => {
+        return {
+            type: OuttrackerTypes.RECORD_INPUT_TO_OUTAGE,
+            result: { text },
+        }
+}
+

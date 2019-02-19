@@ -9,9 +9,14 @@ class _InputDelegator {
     processInput(input) {
         this.inputString = input
         this.resetResponseStatus()
+        this.sendOuttrackerRawInput()
         this.getResponseFromOuttrackerIfAny()
         this.postUserMessage()
         this.triggerPostFromOuttrackerIfAny()
+    }
+
+    sendOuttrackerRawInput() {
+        Outtracker.takeAnyInputText(this.inputString)
     }
 
     resetResponseStatus(){
@@ -27,7 +32,7 @@ class _InputDelegator {
 
     triggerPostFromOuttrackerIfAny() {
         if(this.inputIsForOuttracker()){
-            Outtracker.postResponse()
+            Outtracker.performActionAndRespond()
         }
     }
 

@@ -2,11 +2,13 @@ import HelloResponder from './HelloResponder';
 import StartResponder from './StartResponder';
 import BadCommandResponder from './BadCommandResponder';
 import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
+import store from './StoreSingleton';
+import DescribeResponder from './DescribeResponder';
+import RecordResponder from './RecordResponder';
+import EndResponder from './EndResponder';
 
 
 class _Outtracker {
-    _isAwaitingResponse = false
-
     responders = []
     currentResponder = null
     badCommandResponder = new BadCommandResponder()
@@ -16,8 +18,15 @@ class _Outtracker {
     }
 
     takeInputText(input) {
-        this.cleanInput = input.trim()
+        this.cleanInput = input.trim().split(' ')[0]
+        this.rawInput = input.trim()
         this.currentCommandExists = this.checkIfCommandExistsAndSetCurrentResponder()
+    }
+
+    takeAnyInputText(input){
+        if(store.getState().isRecordingAllInputs) {
+            // ...
+        }
     }
 
     checkIfCommandExistsAndSetCurrentResponder(){
@@ -38,8 +47,9 @@ class _Outtracker {
         this.responseStatus = this.currentResponder.responseStatus
     }
  
-    postResponse() {
+    performActionAndRespond() {
         if(this.currentCommandExists){
+            this.currentResponder.processInputAndPerformAction(this.rawInput)
             this.currentResponder.postMessage()
         }
         if(!this.currentCommandExists) this.respondToBadCommand()
@@ -58,6 +68,10 @@ const Outtracker = new _Outtracker(
     [
         new HelloResponder(),
         new StartResponder(), 
+        new DescribeResponder(),
+        new RecordResponder(),
+        new EndResponder(), 
+        // new ListResponder(), 
     ]
 )
 

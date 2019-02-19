@@ -9,7 +9,7 @@ class ChatInput extends Component {
 
     componentDidMount() {
         $(document).on('keypress',(e) => {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 this.handleSubmit()
                 e.preventDefault()
             }
