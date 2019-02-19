@@ -41,7 +41,7 @@ class _MessageRelayer {
 
     getRecipientFromMessage() {
         const recipientName = this.getRecipientUserFromMessage()
-        if (recipientName === outtrackerUserName) { //hardcoded because there aren't any others...
+        if (recipientName === outtrackerUserName) { // hardcoded because there aren't any others...
             this.recipient = Outtracker
         }
     }
