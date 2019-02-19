@@ -2,12 +2,12 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server';
 import moment from 'moment'
 
-import OuttrackerResponder from "./OuttrackerResponder";
-import StartMessage from './StartMessage';
-import { MESSAGE_STATUS_CODES, dateFormat } from './OuttrackerTypes';
-import store from './StoreSingleton';
-import { createOutage } from './OuttrackerActions';
-import NoMultipleOutageMessage from './NoMultipleOutageMessage';
+import OuttrackerResponder from './OuttrackerResponder';
+import StartMessage from '../messages/StartMessage';
+import { MESSAGE_STATUS_CODES, dateFormat } from '../OuttrackerTypes';
+import store from '../StoreSingleton';
+import { createOutage } from '../OuttrackerActions';
+import NoMultipleOutageMessage from '../messages/NoMultipleOutageMessage';
 
 
 class StartResponder extends OuttrackerResponder {

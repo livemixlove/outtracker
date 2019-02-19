@@ -1,13 +1,11 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server';
-import moment from 'moment'
 
-import OuttrackerResponder from "./OuttrackerResponder";
-import StartMessage from './StartMessage';
-import { MESSAGE_STATUS_CODES, dateFormat } from './OuttrackerTypes';
-import store from './StoreSingleton';
-import { createOutage, enterRecordMode } from './OuttrackerActions';
-import StartRecordMessage from './StartRecordMessage';
+import OuttrackerResponder from './OuttrackerResponder';
+import { MESSAGE_STATUS_CODES } from '../OuttrackerTypes';
+import store from '../StoreSingleton';
+import { enterRecordMode } from '../OuttrackerActions';
+import StartRecordMessage from '../messages/StartRecordMessage';
 
 
 class RecordResponder extends OuttrackerResponder {

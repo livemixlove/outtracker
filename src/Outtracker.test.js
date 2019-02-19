@@ -2,19 +2,19 @@ import React from 'react'
 import moment from 'moment'
 import ReactDOMServer from 'react-dom/server';
 
-import HelloMessage from './HelloMessage';
+import HelloMessage from '../messages/HelloMessage';
 import store from './StoreSingleton';
 import MessageRelayer from './MessageRelayer';
 import { resetStore } from './OuttrackerActions';
-import BadCommandMessage from './BadCommandMessage';
+import BadCommandMessage from '../messages/BadCommandMessage';
 import { demoUserName } from './OuttrackerTypes';
 import { MESSAGE_STATUS_CODES, dateFormat } from './OuttrackerTypes';
-import StartMessage from './StartMessage';
-import DescribeMessage from './DescribeMessage';
-import StartRecordMessage from './StartRecordMessage';
-import EndRecordMessage from './EndRecordMessage';
-import EndMessage from './EndMessage';
-import SummaryMessage from './SummaryMessage';
+import StartMessage from '../messages/StartMessage';
+import DescribeMessage from '../messages/DescribeMessage';
+import StartRecordMessage from '../messages/StartRecordMessage';
+import EndRecordMessage from '../messages/EndRecordMessage';
+import EndMessage from '../messages/EndMessage';
+import SummaryMessage from '../messages/SummaryMessage';
 
 
 describe('outage tracker', () => {

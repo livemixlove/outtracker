@@ -1,6 +1,6 @@
 
 import Outtracker from "./Outtracker";
-import GenericUserMessage from "./GenericUserMessage";
+import GenericUserMessage from "./messages/GenericUserMessage";
 import { MESSAGE_STATUS_CODES } from "./OuttrackerTypes";
 
 class _MessageRelayer {

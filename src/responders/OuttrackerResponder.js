@@ -1,8 +1,10 @@
 import commander from 'commander'
 import stringArgv from 'string-argv'
 
-import store from "./StoreSingleton";
-import { postSuccessfulOuttrackerMessageFromOuttracker, postFailureOuttrackerMessageFromOuttracker } from "./OuttrackerActions";
+import store from "../StoreSingleton";
+import { 
+    postSuccessfulOuttrackerMessageFromOuttracker, 
+    postFailureOuttrackerMessageFromOuttracker } from "../OuttrackerActions";
 
 class OuttrackerResponder {
     hasArgs = false

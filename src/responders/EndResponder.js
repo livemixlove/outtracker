@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server';
-import OuttrackerResponder from "./OuttrackerResponder";
-import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
-import store from './StoreSingleton';
-import { endCurrentOutage, exitRecordMode } from './OuttrackerActions';
-import EndMessage from './EndMessage';
-import SummaryMessage from './SummaryMessage';
-import CannotEndMessage from './CannotEndMessage';
+import OuttrackerResponder from './OuttrackerResponder';
+import { MESSAGE_STATUS_CODES } from '../OuttrackerTypes';
+import store from '../StoreSingleton';
+import { endCurrentOutage, exitRecordMode } from '../OuttrackerActions';
+import EndMessage from '../messages/EndMessage';
+import SummaryMessage from '../messages/SummaryMessage';
+import CannotEndMessage from '../messages/CannotEndMessage';
 
 class EndResponder extends OuttrackerResponder {
     responseStatus = MESSAGE_STATUS_CODES.SUCCESS

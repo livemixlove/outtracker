@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server';
 
-import OuttrackerResponder from "./OuttrackerResponder";
-import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
-import HelpMessage from './HelpMessage';
+import OuttrackerResponder from './OuttrackerResponder';
+import { MESSAGE_STATUS_CODES } from '../OuttrackerTypes';
+import HelpMessage from '../messages/HelpMessage';
 
 
 class HelpResponder extends OuttrackerResponder {

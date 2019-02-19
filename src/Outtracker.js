@@ -1,14 +1,14 @@
-import HelloResponder from './HelloResponder';
-import StartResponder from './StartResponder';
-import BadCommandResponder from './BadCommandResponder';
+import HelloResponder from './responders/HelloResponder';
+import StartResponder from './responders/StartResponder';
+import BadCommandResponder from './responders/BadCommandResponder';
 import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
 import store from './StoreSingleton';
-import DescribeResponder from './DescribeResponder';
-import RecordResponder from './RecordResponder';
-import EndResponder from './EndResponder';
-import EndRecordResponder from './EndRecordResponder';
+import DescribeResponder from './responders/DescribeResponder';
+import RecordResponder from './responders/RecordResponder';
+import EndResponder from './responders/EndResponder';
+import EndRecordResponder from './responders/EndRecordResponder';
 import { recordInputToOutage } from './OuttrackerActions';
-import HelpResponder from './HelpResponder';
+import HelpResponder from './responders/HelpResponder';
 
 
 class _Outtracker {
