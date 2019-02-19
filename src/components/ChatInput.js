@@ -21,15 +21,15 @@ class ChatInput extends Component {
         })
     }
 
+    getInputValue() {
+        const value = $(this.textarea).val()
+        return value
+    }
+
     handleSubmit = () => {
         const inputValue = this.getInputValue()
         MessageRelayer.processMessage(inputValue)
         this.clearInput()
-    }
-
-    getInputValue() {
-        const value = $(this.textarea).val()
-        return value
     }
 
     clearInput() {
@@ -68,8 +68,6 @@ function mapStateToProps(state) {
 
 const RecordingIndicator = ({ recording }) => (
     <div className='input-recording-indicator'>
-        <div className='record-icon' />
-                {' '}
-outtracker is recording all input to current outage history...
-            </div>
+        <div className='record-icon' />outtracker is recording all input to current outage history...
+    </div>
 )

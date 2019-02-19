@@ -17,5 +17,7 @@ Open [http://localhost:3050](http://localhost:3050) to view it in the browser.
 
 Launches the test runner in the interactive watch mode.<br>
 
+For reviewing the code, a good place to start is either App.js or components/ChatInput.js
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,3 +1,8 @@
+// This file is not part of the Demo for New Relic
+// it's part of the React Create App template
+
+
+
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
