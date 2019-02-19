@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './ChatConsole.scss'
+import '../styles/ChatConsole.scss'
 import ChatHistoryViewer from './ChatHistoryViewer'
 import ChatInput from './ChatInput'
 

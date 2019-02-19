@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import $ from 'jquery'
 
-import './ChatHistoryViewer.scss'
+import '../styles/ChatHistoryViewer.scss'
 import MessageRow from './MessageRow'
 
 class ChatHistoryViewer extends Component {

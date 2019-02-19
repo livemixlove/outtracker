@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import $ from 'jquery'
 
-import './ChatInput.scss'
-import MessageRelayer from './MessageRelayer'
+import '../styles/ChatInput.scss'
+import MessageRelayer from '../MessageRelayer'
 
 const ENTER_KEY = 13
 

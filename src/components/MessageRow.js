@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
 
-import { outtrackerUserName } from './OuttrackerTypes'
-import { demoUserName } from './OuttrackerTypes'
+import { demoUserName, outtrackerUserName, MESSAGE_STATUS_CODES } from '../OuttrackerTypes'
 
-import './MessageRow.scss'
-import { MESSAGE_STATUS_CODES } from './OuttrackerTypes'
+import '../styles/MessageRow.scss'
 
 class MessageRow extends Component {
     render() {

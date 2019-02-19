@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 
 import store from './StoreSingleton'
-import './app.scss'
-import ChatConsole from './ChatConsole'
+import './styles/app.scss'
+import ChatConsole from './components/ChatConsole'
 import MessageRelayer from './MessageRelayer'
 import { demoUserName } from './OuttrackerTypes'
 
