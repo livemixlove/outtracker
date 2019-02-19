@@ -9,6 +9,9 @@ class _MessageRelayer {
     processMessage(input) {
         this.inputString = input
         this.resetResponseStatus()
+        // ideally you'd decouple MessageRelayer and Outtracker
+        // probably setting up a something like a "MessageRecipient" abstract class 
+        // for any object wanting to recieve messages/commands
         this.sendUnprocessedInputToOuttracker()
         this.getResponseFromOuttrackerIfAny()
         this.postUserMessage()
@@ -24,8 +27,6 @@ class _MessageRelayer {
     }
 
     getResponseFromOuttrackerIfAny() {
-        // ideally you'd decouple MessageRelayer and Outtracker
-        // probably setting up a something like a "MessageRecipient" abstract class 
         if(this.inputIsForOuttracker()){
             Outtracker.takeCommandInputText(this.inputStringWithoutTarget())
             this.currentResponseStatus = Outtracker.getResponseStatus()
