@@ -13,15 +13,15 @@ class App extends Component {
     }
 
     startAppWithResponseFromOuttracker(){
-        MessageRelayer.processMessage('@outtracker', demoUserName)
+        MessageRelayer.processMessage('@outtracker help', demoUserName)
         // TODO remove these following lines
-        MessageRelayer.processMessage('@outtracker start', demoUserName)
         // MessageRelayer.processMessage('@outtracker start', demoUserName)
-        MessageRelayer.processMessage('@outtracker describe "asdf hahah"', demoUserName)
-        MessageRelayer.processMessage('@outtracker record', demoUserName)
-        MessageRelayer.processMessage('hello hello', demoUserName)
-        MessageRelayer.processMessage('no way no way hey hey', demoUserName)
-        MessageRelayer.processMessage('@outtracker end', demoUserName)
+        // // MessageRelayer.processMessage('@outtracker start', demoUserName)
+        // MessageRelayer.processMessage('@outtracker describe "asdf hahah"', demoUserName)
+        // MessageRelayer.processMessage('@outtracker record', demoUserName)
+        // MessageRelayer.processMessage('hello hello', demoUserName)
+        // MessageRelayer.processMessage('no way no way hey hey', demoUserName)
+        // MessageRelayer.processMessage('@outtracker end', demoUserName)
     }
 
     render() {

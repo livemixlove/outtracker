@@ -8,6 +8,7 @@ import RecordResponder from './RecordResponder';
 import EndResponder from './EndResponder';
 import EndRecordResponder from './EndRecordResponder';
 import { recordInputToOutage } from './OuttrackerActions';
+import HelpResponder from './HelpResponder';
 
 
 class _Outtracker {
@@ -19,16 +20,16 @@ class _Outtracker {
         this.responders = responders
     }
 
-    takeInputText(input) {
-        this.currentCommand = input.trim().split(' ')[0]
-        this.fullInput = input.trim()
-        this.currentCommandExists = this.checkIfCommandExistsAndSetCurrentResponder()
-    }
-
     takeInputTextForRecording(input){
         if(store.getState().isRecordingAllInputs) {
             store.dispatch(recordInputToOutage(input))
         }
+    }
+
+    takeCommandInputText(input) {
+        this.fullInput = input
+        this.currentCommand = this.getCommandFromInputString(input)
+        this.currentCommandExists = this.checkIfCommandExistsAndSetCurrentResponder()
     }
 
     checkIfCommandExistsAndSetCurrentResponder(){
@@ -54,7 +55,6 @@ class _Outtracker {
         if(this.currentCommandExists){
             try {
                 this.currentResponder.processMessageAndPerformAction(this.fullInput)
-                
                 this.currentResponder.postMessage()
             } catch(e) {
                 console.error(e)
@@ -71,6 +71,10 @@ class _Outtracker {
     respondToBadCommand(){
         this.badCommandResponder.postMessage()
     }
+
+    getCommandFromInputString(input) {
+        return input.trim().split(' ')[0]
+    }
 }
 
 const Outtracker = new _Outtracker(
@@ -81,6 +85,7 @@ const Outtracker = new _Outtracker(
         new DescribeResponder(),
         new RecordResponder(),
         new EndRecordResponder(),
+        new HelpResponder(),
     ]
 )
 

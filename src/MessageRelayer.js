@@ -25,7 +25,7 @@ class _MessageRelayer {
 
     getResponseFromOuttrackerIfAny() {
         if(this.inputIsForOuttracker()){
-            Outtracker.takeInputText(this.inputStringWithoutTarget())
+            Outtracker.takeCommandInputText(this.inputStringWithoutTarget())
             this.currentResponseStatus = Outtracker.getResponseStatus()
         }
     }
@@ -50,7 +50,7 @@ class _MessageRelayer {
 
     inputStringWithoutTarget(){
         const targetName = this.getTargetUserFromInputString()
-        return this.inputString.replace(`@${targetName}`,'')
+        return this.inputString.replace(`@${targetName}`,'').trim()
     }
 
     getTargetUserFromInputString() {
@@ -63,7 +63,7 @@ class _MessageRelayer {
         } else {
             return null
         }
-    } 
+    }
 }
 
 const MessageRelayer = new _MessageRelayer()

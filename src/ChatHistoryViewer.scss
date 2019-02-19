@@ -17,3 +17,13 @@
     display: block;
     margin-bottom: 10px;
 }
+
+.help-items-container {
+    .help-item {
+        display: block;
+
+        .help-item-command {
+            font-weight: bold;
+        }
+    }
+}
