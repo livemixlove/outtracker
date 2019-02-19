@@ -11,20 +11,21 @@ class OuttrackerResponder {
     hasArgs = false
 
     constructor() {
-        // if (this.getCommand === undefined) {
-        //     throw new TypeError('Must set a getCommand method')
-        // }
         if (this.postMessage === undefined) {
             throw new TypeError('Must set a postMessage method')
         }
         if (this.getArgs && this.getCommand) {
-            this.hasArgs = true
-            commander
-                .command(this.getCommand() + ' ' + this.getArgs())
-                .action((args) => {
-                    this.performAction(args)
-                })
+            this.setupCommandParser()
         }
+    }
+
+    setupCommandParser() {
+        this.hasArgs = true
+        commander
+            .command(this.getCommand() + ' ' + this.getArgs())
+            .action((args) => {
+                this.performAction(args)
+            })
     }
 
     processMessageAndPerformAction(inputText) {
