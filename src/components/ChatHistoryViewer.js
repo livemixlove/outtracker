@@ -32,6 +32,6 @@ ChatHistoryViewer = connect(mapStateToProps)(ChatHistoryViewer)
 export default ChatHistoryViewer
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
     return { messageHistory: state.messageHistory.toArray() }
 }

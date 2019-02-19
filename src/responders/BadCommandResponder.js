@@ -9,9 +9,9 @@ import { MESSAGE_STATUS_CODES } from '../OuttrackerTypes'
 class BadCommandResponder extends OuttrackerResponder {
     responseStatus = MESSAGE_STATUS_CODES.FAILURE
 
-    getCommand() {
-        return '*'
-    }
+    // getCommand() {
+    //     return '*'// doesn't do anything
+    // }
 
     postMessage() {
         this.postFailureOuttrackerMessage(ReactDOMServer.renderToString(<BadCommandMessage />))

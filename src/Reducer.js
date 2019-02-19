@@ -71,7 +71,6 @@ const addOutageDescriptorOfType = (state, action, DesciptorType) => {
     return state
 }
 
-
 const initialState = OuttrackerStateRecord({
     messageHistory: new Immutable.List(),
     outagesById: new Immutable.Map(),
