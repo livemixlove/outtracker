@@ -20,12 +20,15 @@ class SummaryMessage extends Component {
             endTime,
             outageDescriptors,
         } = this.getPropsWithoutReduxConnect()
+
+        const { outageId } = this.props
         return (
             <span className='summary-wrapper'>
                 <p>
                     <span className='summary-title'><strong>Outage Summary</strong></span>
                     <strong>Start Time:</strong> {startTime}<br />
                     <strong>End Time:</strong> {endTime}<br />
+                    <strong>Outage Id:</strong> {outageId}<br />
                 </p>
                 <hr />
                 <span>

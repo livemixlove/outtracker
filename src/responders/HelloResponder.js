@@ -15,7 +15,6 @@ class HelloResponder extends OuttrackerResponder {
 
     postMessage() {
         this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<HelloMessage />))
-        
     }
 }
 

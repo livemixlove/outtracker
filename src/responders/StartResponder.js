@@ -34,11 +34,9 @@ class StartResponder extends OuttrackerResponder {
         if(this.noMultipleWarning){
             this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<NoMultipleOutageMessage outage={this.outage}/>))
             this.reset()
-            this.responseStatus = MESSAGE_STATUS_CODES.FAILURE
         } else {
             this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartMessage outage={this.outage}/>))
             this.reset()
-            
         }
     }
 

@@ -4,7 +4,7 @@ class StartMessage extends Component {
     render() {
         const { startTime } = this.props.outage
         return ([
-            <p>Ok! outtracker is has started to track an outage.</p>,
+            <p>Ok! outtracker is tracking a new outage.</p>,
             <p><strong>Start time: </strong>{startTime}</p>
         ])
     }

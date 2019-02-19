@@ -24,6 +24,8 @@ class _MessageRelayer {
     }
 
     getResponseFromOuttrackerIfAny() {
+        // if this was an actual app, you'd decouple MessageRelayer and Outtracker
+        // probably setting up a something like a "MessageRecipient" abstract type 
         if(this.inputIsForOuttracker()){
             Outtracker.takeCommandInputText(this.inputStringWithoutTarget())
             this.currentResponseStatus = Outtracker.getResponseStatus()

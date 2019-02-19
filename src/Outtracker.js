@@ -32,6 +32,20 @@ class _Outtracker {
         this.currentCommandExists = this.checkIfCommandExistsAndSetCurrentResponder()
     }
 
+    performActionAndRespond() {
+        let errorProcessingCommand = false
+        if(this.currentCommandExists){
+            try {
+                this.currentResponder.processMessageAndPerformAction(this.fullInput)
+                this.currentResponder.postMessage()
+            } catch(e) {
+                console.error(e)
+                errorProcessingCommand = true
+            }
+        }
+        if(!this.currentCommandExists || errorProcessingCommand ) this.respondToBadCommand()
+    }
+
     checkIfCommandExistsAndSetCurrentResponder(){
         let foundResponder = false
         this.currentResponder = null
@@ -48,20 +62,6 @@ class _Outtracker {
     setCurrentResponder(responder) {
         this.currentResponder = responder
         this.responseStatus = this.currentResponder.responseStatus
-    }
- 
-    performActionAndRespond() {
-        let errorProcessingCommand = false
-        if(this.currentCommandExists){
-            try {
-                this.currentResponder.processMessageAndPerformAction(this.fullInput)
-                this.currentResponder.postMessage()
-            } catch(e) {
-                console.error(e)
-                errorProcessingCommand = true
-            }
-        }
-        if(!this.currentCommandExists || errorProcessingCommand ) this.respondToBadCommand()
     }
 
     getResponseStatus(){

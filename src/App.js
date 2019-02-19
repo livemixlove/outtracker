@@ -15,12 +15,12 @@ class App extends Component {
     startAppWithResponseFromOuttracker(){
         MessageRelayer.processMessage('@outtracker help', demoUserName)
         // uncomment these lines if you want to prepopulate chat
-        // MessageRelayer.processMessage('@outtracker start', demoUserName)
-        // MessageRelayer.processMessage('@outtracker describe "asdf hahah"', demoUserName)
-        // MessageRelayer.processMessage('@outtracker record', demoUserName)
-        // MessageRelayer.processMessage('hello hello', demoUserName)
-        // MessageRelayer.processMessage('no way no way hey hey', demoUserName)
-        // MessageRelayer.processMessage('@outtracker end', demoUserName)
+        MessageRelayer.processMessage('@outtracker start', demoUserName)
+        MessageRelayer.processMessage('@outtracker describe "some description of outage"', demoUserName)
+        MessageRelayer.processMessage('@outtracker record', demoUserName)
+        MessageRelayer.processMessage('hello hello', demoUserName)
+        MessageRelayer.processMessage('great words in a message', demoUserName)
+        MessageRelayer.processMessage('@outtracker end', demoUserName)
     }
 
     render() {
