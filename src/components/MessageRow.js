@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { demoUserName, outtrackerUserName, MESSAGE_STATUS_CODES, ChatMessagePropTypes } from '../OuttrackerTypes'
+import {
+    demoUserName, outtrackerUserName, MESSAGE_STATUS_CODES, ChatMessagePropTypes,
+} from '../OuttrackerTypes'
 
 import '../styles/MessageRow.scss'
 

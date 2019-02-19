@@ -53,6 +53,8 @@ class ChatInput extends Component {
                 />
                 <span
                     className='submit-button'
+                    role='button'
+                    tabIndex={0}
                     onClick={this.handleSubmit}
                 >
                     Submit
