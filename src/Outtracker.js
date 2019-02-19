@@ -18,9 +18,13 @@ class _Outtracker {
 
     badCommandResponder = new BadCommandResponder()
 
+    fullInput = null
+
     constructor(responders) {
         this.responders = responders || []
     }
+
+    // "public" methods
 
     takeInputTextForRecording(input) {
         if (store.getState().isRecordingAllInputs) {
@@ -48,7 +52,7 @@ class _Outtracker {
         if (!this.currentCommandExists || errorProcessingCommand) this.respondToBadCommand()
     }
 
-    // //
+    // "private" methods
 
     checkIfCommandExistsAndSetCurrentResponder() {
         let foundResponder = false
