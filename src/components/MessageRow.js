@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { demoUserName, outtrackerUserName, MESSAGE_STATUS_CODES } from '../OuttrackerTypes'
+import { demoUserName, outtrackerUserName, MESSAGE_STATUS_CODES, ChatMessagePropTypes } from '../OuttrackerTypes'
 
 import '../styles/MessageRow.scss'
 
 class MessageRow extends Component {
+    static propTypes = {
+        message: ChatMessagePropTypes.isRequired,
+    }
+
     render() {
         const { message } = this.props
 
@@ -48,11 +53,19 @@ const UserMessage = ({ message }) => (
         <div dangerouslySetInnerHTML={{ __html: message.text }} />
     </div>
 )
+
+UserMessage.propTypes = {
+    message: ChatMessagePropTypes.isRequired,
+}
+
 const OuttrackerMessage = ({ message }) => (
     <div className='chat-message chat-message-right'>
         <div dangerouslySetInnerHTML={{ __html: message.text }} />
     </div>
 )
+OuttrackerMessage.propTypes = {
+    message: ChatMessagePropTypes.isRequired,
+}
 
 const UserAndDateForRow = ({ user, dateTimeString }) => (
     <div className='chat-message-date-time'>
@@ -63,3 +76,8 @@ const UserAndDateForRow = ({ user, dateTimeString }) => (
         {dateTimeString}
     </div>
 )
+
+UserAndDateForRow.propTypes = {
+    user: PropTypes.string.isRequired,
+    dateTimeString: PropTypes.string.isRequired,
+}

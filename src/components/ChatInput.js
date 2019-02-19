@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import $ from 'jquery'
 
@@ -8,6 +9,10 @@ import MessageRelayer from '../MessageRelayer'
 const ENTER_KEY = 13
 
 class ChatInput extends Component {
+    static propTypes = {
+        recording: PropTypes.bool.isRequired,
+    }
+
     componentDidMount() {
         this.setupHandleEnterKey()
     }
@@ -44,7 +49,7 @@ class ChatInput extends Component {
                 <textarea
                     className='main-chat-input'
                     wrap='soft'
-                    ref={ref => this.textarea = ref}
+                    ref={(ref) => { this.textarea = ref }}
                 />
                 <span
                     className='submit-button'
@@ -66,7 +71,7 @@ function mapStateToProps(state) {
     }
 }
 
-const RecordingIndicator = ({ recording }) => (
+const RecordingIndicator = () => (
     <div className='input-recording-indicator'>
         <div className='record-icon' />outtracker is recording all input to current outage history...
     </div>

@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import $ from 'jquery'
 
 import '../styles/ChatHistoryViewer.scss'
 import MessageRow from './MessageRow'
+import { ChatMessagePropTypes } from '../OuttrackerTypes'
 
 class ChatHistoryViewer extends Component {
+    static propTypes = {
+        messageHistory: PropTypes.arrayOf(
+            ChatMessagePropTypes,
+        ).isRequired,
+    }
+
     componentDidUpdate() {
         this.scrollToBottom()
     }

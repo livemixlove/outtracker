@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Immutable from 'immutable'
 
 export const dateFormat = 'LL HH:mm:ss'
@@ -17,10 +18,17 @@ export const OUTAGE_RECORD_TYPES = {
 }
 
 export const ChatMessageRecord = Immutable.Record({
-    text: Immutable.List(),
+    text: null,
     dateTime: null,
     user: null,
     messageStatusCode: MESSAGE_STATUS_CODES.NEUTRAL,
+})
+
+export const ChatMessagePropTypes = PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    dateTime: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+    messageStatusCode: PropTypes.number.isRequired,
 })
 
 export const OutageRecord = Immutable.Record({
