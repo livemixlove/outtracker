@@ -12,7 +12,7 @@ class HelpMessage extends Component {
     render() {
         return (
             <div className='help-items-container'>
-                {helpItems.map(item => <HelpItem {...item} />)}
+                {helpItems.map(item => <HelpItem key={item.command} {...item} />)}
             </div>
         )
     }
