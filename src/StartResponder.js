@@ -11,7 +11,7 @@ class StartResponder extends OuttrackerResponder {
     }
 
     postMessage() {
-        this.postSuccessfulMessage(ReactDOMServer.renderToString(<RequestNameMessage />))
+        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<RequestNameMessage />))
     }
 }
 

@@ -1,4 +1,4 @@
-import OuttrackerTypes, { MESSAGE_STATUS_CODES } from "./OuttakerActionTypes";
+import OuttrackerTypes, { MESSAGE_STATUS_CODES, demoUserName, outtrackerUserName } from "./OuttakerActionTypes";
 
 export const resetStore = ( ) => {
     return {
@@ -6,23 +6,45 @@ export const resetStore = ( ) => {
         }
 }
 
-export const postSuccessfulMessageFromOuttracker = (message) => (
+export const postSuccessfulOuttrackerMessageFromOuttracker = (message) => (
     {
         type: OuttrackerTypes.ADD_MESSAGE_TO_CHAT_HISTORY,
         result: {
             message,
-            user: 'outtracker',
+            user: outtrackerUserName,
             messageStatusCode: MESSAGE_STATUS_CODES.SUCCESS
         }
     }
 )
 
-export const postFailureMessageFromOuttracker = (message) => (
+export const postFailureOuttrackerMessageFromOuttracker = (message) => (
     {
         type: OuttrackerTypes.ADD_MESSAGE_TO_CHAT_HISTORY,
         result: {
             message,
-            user: 'outtracker',
+            user: outtrackerUserName,
+            messageStatusCode: MESSAGE_STATUS_CODES.FAILURE
+        }
+    }
+)
+
+export const postSuccessfulMessageFromUser = (message) => (
+    {
+        type: OuttrackerTypes.ADD_MESSAGE_TO_CHAT_HISTORY,
+        result: {
+            message,
+            user: demoUserName,
+            messageStatusCode: MESSAGE_STATUS_CODES.SUCCESS
+        }
+    }
+)
+
+export const postFailureMessageFromUser = (message) => (
+    {
+        type: OuttrackerTypes.ADD_MESSAGE_TO_CHAT_HISTORY,
+        result: {
+            message,
+            user: demoUserName,
             messageStatusCode: MESSAGE_STATUS_CODES.FAILURE
         }
     }

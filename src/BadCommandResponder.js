@@ -12,7 +12,7 @@ class BadCommandResponder extends OuttrackerResponder {
     }
 
     postMessage() {
-        this.postFailureMessage(ReactDOMServer.renderToString(<BadCommandMessage />))
+        this.postFailureOuttrackerMessage(ReactDOMServer.renderToString(<BadCommandMessage />))
     }
 }
 

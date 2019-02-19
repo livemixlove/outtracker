@@ -11,10 +11,9 @@ import { demoUserName, MESSAGE_STATUS_CODES } from './OuttakerActionTypes';
 import OutageCreationSuccessMessage from './OutageCreationSuccessMessage';
 
 describe('outage tracker start outage', () => {
-    const inputDelegator = new InputDelegator()
     it('should ask for an outage name after prompting to start an outage', () => {
         store.dispatch(resetStore())
-        inputDelegator.processInput('@outtracker start', demoUserName )
+        InputDelegator.processInput('@outtracker start', demoUserName )
         const requestNameMessage = ReactDOMServer.renderToString(<RequestNameMessage />)
         const mostRecentMessage = store.getState().messageHistory.last()
         expect(mostRecentMessage.text).toEqual(requestNameMessage)
@@ -26,7 +25,7 @@ describe('outage tracker start outage', () => {
             name: 'the great outage',
             dateTime: moment().format('LLLL')
         }
-        inputDelegator.processInput(outage.name)
+        InputDelegator.processInput(outage.name)
         const creationMessage = ReactDOMServer.renderToString(<OutageCreationSuccessMessage outage={outage} />)
         const mostRecentMessage = store.getState().messageHistory.last()
         expect(mostRecentMessage.text).toEqual(creationMessage)

@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import $ from 'jquery'
 
 import './ChatHistoryViewer.scss'
 import MessageRow from './MessageRow'
 
 class ChatHistoryViewer extends Component {
+    componentDidUpdate() {
+        const $element = $(this.div)
+        $element.scrollTop($element[0].scrollHeight)
+    }
+
     render() {
         const { messageHistory } = this.props
         return (
-            <div className='chat-history-viewer-holder'>
+            <div
+                className='chat-history-viewer-holder'
+                ref={ref => {this.div = ref}}>
                 {messageHistory.map(message => {
                     return <MessageRow message={message} />
                 })}

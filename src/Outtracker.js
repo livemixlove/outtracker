@@ -19,6 +19,10 @@ class _Outtracker {
         if(!commandExists) this.respondToBadCommand()
     }
 
+    takeResponse(input){
+        
+    }
+
     respondIfCommandExists(){
         let foundResponder = false
         this.currentResponder = null

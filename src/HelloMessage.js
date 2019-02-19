@@ -4,9 +4,9 @@ class HelloMessage extends Component {
     render() {
         return (
             [
-                'Hello, DemoUser!  You can report an outage by typing:',
-                <strong>@outtracker start</strong>,
-                <span>or get all options with <strong>@outtracker --help</strong></span>
+                <p>Hello, DemoUser!  You can report an outage by typing:</p>,
+                <p><strong>@outtracker start</strong></p>,
+                <p><span>or get all options with <strong>@outtracker --help</strong></span></p>
             ]
         )
     }

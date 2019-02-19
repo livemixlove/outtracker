@@ -1,13 +1,56 @@
 import React, { Component } from 'react'
+import classnames from 'classnames'
+
+import { demoUserName, outtrackerUserName, MESSAGE_STATUS_CODES } from './OuttakerActionTypes';
+
+import './MessageRow.scss'
 
 class MessageRow extends Component {
     render() {
-        return (
-            <div>
-                Message row...
-            </div>
-        )
+        const { message } = this.props
+        let messageBubble 
+        let leftAlign
+        if(message.user === demoUserName) {
+            messageBubble = <UserMessage message={message} />
+            leftAlign = true
+        } else if ( message.user === outtrackerUserName) {
+            messageBubble = <OuttrackerMessage message={message} />
+            leftAlign = false
+        }
+
+        const rowClasses = classnames(
+            {
+            'left-align': leftAlign,
+            'right-align': !leftAlign,
+            'success': message.messageStatusCode === MESSAGE_STATUS_CODES.SUCCESS,
+            'neutral': message.messageStatusCode === MESSAGE_STATUS_CODES.NEUTRAL,
+            'failure': message.messageStatusCode === MESSAGE_STATUS_CODES.FAILURE,
+        })
+
+        return <div className={'message-row ' +rowClasses}>
+                    <DateTimeForRow dateTimeString={message.dateTime} />
+                    <div className={'message-row-flex-container ' +rowClasses}>
+                        {messageBubble}
+                    </div>
+                </div>
     }
 }
 
 export default MessageRow
+
+const UserMessage = ({message}) => (
+    <div className='chat-message chat-message-left'>
+        <div dangerouslySetInnerHTML={{ __html: message.text }} />
+    </div>
+)
+const OuttrackerMessage = ({message}) => (
+    <div className='chat-message chat-message-right'>
+        <div dangerouslySetInnerHTML={{ __html: message.text }} />
+    </div>
+)
+
+const DateTimeForRow = ({dateTimeString}) => (
+    <div className='chat-message-date-time'>
+        {dateTimeString}
+    </div>
+)

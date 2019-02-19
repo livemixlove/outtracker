@@ -4,6 +4,7 @@ const OuttrackerTypes = {
 }
 
 export const demoUserName = 'DemoUser'
+export const outtrackerUserName = 'outtracker'
 
 export const MESSAGE_STATUS_CODES = {
     NEUTRAL: 1,

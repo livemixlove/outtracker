@@ -4,7 +4,6 @@ import Immutable from 'immutable'
 import OuttrackerTypes, { MESSAGE_STATUS_CODES } from './OuttakerActionTypes';
 
 
-
 const OuttrackerStateRecord = Immutable.Record({
     messageHistory: Immutable.List()
 })

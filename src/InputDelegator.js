@@ -1,9 +1,10 @@
-import store from "./StoreSingleton";
-import Outtracker from "./Outtracker";
-import OuttrackerTypes, { MESSAGE_STATUS_CODES } from "./OuttakerActionTypes";
 
-class InputDelegator {
+import Outtracker from "./Outtracker";
+import GenericUserMessage from "./GenericUserMessage";
+
+class _InputDelegator {
     inputString = null
+    genericUserMessage = new GenericUserMessage()
     processInput(input, user) {
         this.inputString = input
 
@@ -12,14 +13,7 @@ class InputDelegator {
         } else if(this.inputIsForOuttracker()){
             Outtracker.takeInputText(this.inputStringWithoutTarget())
         } else {
-            store.dispatch({
-                type: OuttrackerTypes.ADD_MESSAGE_TO_CHAT_HISTORY,
-                result: {
-                    message: this.inputString,
-                    user,
-                    messageStatusCode: MESSAGE_STATUS_CODES.NEUTRAL,
-                }
-            })
+            this.genericUserMessage.postMessage(input)
         }
     }
 
@@ -45,5 +39,7 @@ class InputDelegator {
         return this.inputString.replace(`@${targetName}`,'')
     }
 }
+
+const InputDelegator = new _InputDelegator()
 
 export default InputDelegator

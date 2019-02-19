@@ -10,9 +10,8 @@ import { demoUserName, MESSAGE_STATUS_CODES } from './OuttakerActionTypes';
 
 
 describe('outage tracker general', () => {
-    const inputDelegator = new InputDelegator()
     it('respond to blank input with a helpful message', () => {
-        inputDelegator.processInput('@outtracker', demoUserName )
+        InputDelegator.processInput('@outtracker', demoUserName )
         const helloMessage = ReactDOMServer.renderToString(<HelloMessage />)
         const mostRecentMessage = store.getState().messageHistory.last()
         expect(mostRecentMessage.text).toEqual(helloMessage)
@@ -22,7 +21,17 @@ describe('outage tracker general', () => {
 
     it('should respond with an error message on bad command', () => {
         const badCommand = 'laskdjflkasjdf'
-        inputDelegator.processInput(`@outtracker ${badCommand}`, demoUserName)
+        InputDelegator.processInput(`@outtracker ${badCommand}`, demoUserName)
+        const badCommandMessage = ReactDOMServer.renderToString(<BadCommandMessage />)
+        const mostRecentMessage = store.getState().messageHistory.last()
+        expect(mostRecentMessage.text).toEqual(badCommandMessage)
+        expect(mostRecentMessage.messageStatusCode).toEqual(MESSAGE_STATUS_CODES.FAILURE)
+        store.dispatch(resetStore())
+    })
+
+    it('should respond with an error message on bad command', () => {
+        const badCommand = 'laskdjflkasjdf'
+        InputDelegator.processInput(`@outtracker ${badCommand}`, demoUserName)
         const badCommandMessage = ReactDOMServer.renderToString(<BadCommandMessage />)
         const mostRecentMessage = store.getState().messageHistory.last()
         expect(mostRecentMessage.text).toEqual(badCommandMessage)
