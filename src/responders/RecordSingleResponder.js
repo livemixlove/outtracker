@@ -37,6 +37,11 @@ class RecordSingleResponder extends OuttrackerResponder {
         } else {
             this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<RecordSingleErrorMessage text={this.text} />))
         }
+        this.reset()
+    }
+
+    reset() {
+        this.canSave = false
     }
 }
 

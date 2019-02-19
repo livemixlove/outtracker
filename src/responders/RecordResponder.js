@@ -36,6 +36,11 @@ class RecordResponder extends OuttrackerResponder {
                 ),
             )
         }
+        this.reset()
+    }
+
+    reset() {
+        this.canRecord = false
     }
 }
 

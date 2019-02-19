@@ -35,6 +35,7 @@ class EndResponder extends OuttrackerResponder {
         } else {
             this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<CannotEndMessage outageId={this.outageId} />))
         }
+        this.reset()
     }
 
     reset() {
