@@ -32,7 +32,7 @@ class _Outtracker {
         }
     }
 
-    takeCommandInputText(input) {
+    takeCommand(input) {
         this.fullInput = input
         this.currentCommand = this.getCommandFromInputString(input)
         this.currentCommandExists = this.checkIfCommandExistsAndSetCurrentResponder()

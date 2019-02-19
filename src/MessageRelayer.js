@@ -4,7 +4,7 @@ import GenericUserMessage from './messages/GenericUserMessage'
 import { MESSAGE_STATUS_CODES, outtrackerUserName } from './OuttrackerTypes'
 
 class _MessageRelayer {
-    inputString = null
+    inputMessage = null
 
     recipientName = null
 
@@ -16,12 +16,12 @@ class _MessageRelayer {
 
     // "public" methods
 
-    processMessage(input) {
+    processMessage(message) {
         this.reset()
-        
-        this.inputString = input
-        this.getRecipientFromInput()
-        this.sendUnprocessedInputToListeners()
+
+        this.inputMessage = message
+        this.getRecipientFromMessage()
+        this.sendUnprocessedMessageToListeners()
         this.getResponseFromRecipientIfAny()
         this.postUserMessage()
         this.triggerPostFromRecipientIfAny()
@@ -34,27 +34,27 @@ class _MessageRelayer {
     // "private" methods
 
     reset() {
-        this.inputString = null
         this.currentResponseStatus = MESSAGE_STATUS_CODES.NEUTRAL
+        this.inputMessage = null
         this.recipient = null
     }
 
-    getRecipientFromInput() {
-        const recipientName = this.getTargetUserFromInputString()
+    getRecipientFromMessage() {
+        const recipientName = this.getRecipientUserFromMessage()
         if (recipientName === outtrackerUserName) {
             this.recipient = Outtracker
         }
     }
 
-    sendUnprocessedInputToListeners() {
+    sendUnprocessedMessageToListeners() {
         this.listenerFunctions.forEach(
-            listenerFunction => listenerFunction(this.inputString),
+            listenerFunction => listenerFunction(this.inputMessage),
         )
     }
 
     getResponseFromRecipientIfAny() {
         if (this.recipient) {
-            this.recipient.takeCommandInputText(this.inputStringWithoutTarget())
+            this.recipient.takeCommand(this.inputStringWithoutRecipient())
             this.currentResponseStatus = this.recipient.getResponseStatus()
         }
     }
@@ -67,19 +67,19 @@ class _MessageRelayer {
 
     postUserMessage() {
         this.genericUserMessage.postMessageWithStatus(
-            this.inputString,
+            this.inputMessage,
             this.currentResponseStatus,
         )
     }
 
-    inputStringWithoutTarget() {
-        const targetName = this.getTargetUserFromInputString()
-        return this.inputString.replace(`@${targetName}`, '').trim()
+    inputStringWithoutRecipient() {
+        const recipientName = this.getRecipientUserFromMessage()
+        return this.inputMessage.replace(`@${recipientName}`, '').trim()
     }
 
-    getTargetUserFromInputString() {
-        if (!this.inputString) return null
-        const trimmedInput = this.inputString.trim()
+    getRecipientUserFromMessage() {
+        if (!this.inputMessage) return null
+        const trimmedInput = this.inputMessage.trim()
         const splitInput = trimmedInput.split(' ').map(s => s.toLowerCase())
         const firstToken = splitInput[0]
         if (firstToken && firstToken.includes('@')) {
