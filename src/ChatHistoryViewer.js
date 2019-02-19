@@ -7,6 +7,10 @@ import MessageRow from './MessageRow'
 
 class ChatHistoryViewer extends Component {
     componentDidUpdate() {
+        this.scrollToBottom()
+    }
+
+    scrollToBottom() {
         const $element = $(this.div)
         $element.scrollTop($element[0].scrollHeight)
     }

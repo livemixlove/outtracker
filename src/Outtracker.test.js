@@ -6,7 +6,8 @@ import store from './StoreSingleton';
 import InputDelegator from './InputDelegator';
 import { resetStore } from './OuttrackerActions';
 import BadCommandMessage from './BadCommandMessage';
-import { demoUserName, MESSAGE_STATUS_CODES } from './OuttakerActionTypes';
+import { demoUserName } from './OuttakerActionTypes';
+import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
 
 
 describe('outage tracker general', () => {

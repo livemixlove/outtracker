@@ -51,5 +51,12 @@
             }
             
         }
+
+        &.success .chat-message {
+            border: 1px solid rgb(0, 181, 0);
+        }
+        &.failure .chat-message  {
+            border: 1px solid rgb(155, 0, 0);
+        }
     }
 }

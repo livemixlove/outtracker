@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
 
-import { demoUserName, outtrackerUserName, MESSAGE_STATUS_CODES } from './OuttakerActionTypes';
+import { demoUserName, outtrackerUserName } from './OuttakerActionTypes';
 
 import './MessageRow.scss'
+import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
 
 class MessageRow extends Component {
     render() {
         const { message } = this.props
+
         let messageBubble 
         let leftAlign
         if(message.user === demoUserName) {

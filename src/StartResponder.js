@@ -2,16 +2,22 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server';
 
 import OuttrackerResponder from "./OuttrackerResponder";
-import RequestNameMessage from './RequestNameMessage';
+import StartMessage from './StartMessage';
+import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
 
 
 class StartResponder extends OuttrackerResponder {
+    responseStatus = MESSAGE_STATUS_CODES.SUCCESS
     getCommand(){
         return 'start'
     }
 
     postMessage() {
-        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<RequestNameMessage />))
+
+        // create outage with dateTime
+
+        this.postSuccessfulOuttrackerMessage(ReactDOMServer.renderToString(<StartMessage />))
+        return MESSAGE_STATUS_CODES.SUCCESS
     }
 }
 

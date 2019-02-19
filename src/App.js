@@ -7,19 +7,22 @@ import ChatConsole from './ChatConsole';
 import InputDelegator from './InputDelegator';
 import { demoUserName } from './OuttakerActionTypes';
 
-
-//TODO remove for publish
-InputDelegator.processInput('@outtracker', demoUserName)
-
-
 class App extends Component {
-  render() {
-    return (
-        <Provider store={store}>
-            <ChatConsole />
-        </Provider>
-    );
-  }
+    componentDidMount() {
+        this.startAppWithResponseFromOuttracker()
+    }
+
+    startAppWithResponseFromOuttracker(){
+        InputDelegator.processInput('@outtracker', demoUserName)
+    }
+
+    render() {
+        return (
+            <Provider store={store}>
+                <ChatConsole />
+            </Provider>
+        );
+    }
 }
 
 export default App;

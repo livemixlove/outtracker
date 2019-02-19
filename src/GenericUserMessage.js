@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server';
 
 import OuttrackerResponder from "./OuttrackerResponder";
-import RequestNameMessage from './RequestNameMessage';
 import store from './StoreSingleton';
-import OuttrackerTypes, { MESSAGE_STATUS_CODES, demoUserName } from './OuttakerActionTypes';
+import OuttrackerTypes, { demoUserName } from './OuttakerActionTypes';
+import { MESSAGE_STATUS_CODES } from './OuttrackerTypes';
 
 
 class GenericUserMessage extends OuttrackerResponder {
@@ -18,6 +18,18 @@ class GenericUserMessage extends OuttrackerResponder {
             }
         })
     }
+
+    postMessageWithStatus(message, status) {
+        store.dispatch({
+            type: OuttrackerTypes.ADD_MESSAGE_TO_CHAT_HISTORY,
+            result: {
+                message: message,
+                user: demoUserName,
+                messageStatusCode: status,
+            }
+        })
+    }
+
 }
 
 export default GenericUserMessage

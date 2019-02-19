@@ -1,20 +1,41 @@
 
 import Outtracker from "./Outtracker";
 import GenericUserMessage from "./GenericUserMessage";
+import { MESSAGE_STATUS_CODES } from "./OuttrackerTypes";
 
 class _InputDelegator {
     inputString = null
     genericUserMessage = new GenericUserMessage()
-    processInput(input, user) {
+    processInput(input) {
         this.inputString = input
+        this.resetResponseStatus()
+        this.getResponseFromOuttrackerIfAny()
+        this.postUserMessage()
+        this.triggerPostFromOuttrackerIfAny()
+    }
 
-        if( Outtracker.isAwaitingResponse()) {
-            Outtracker.takeResponse(input)
-        } else if(this.inputIsForOuttracker()){
+    resetResponseStatus(){
+        this.currentResponseStatus = MESSAGE_STATUS_CODES.NEUTRAL
+    }
+
+    getResponseFromOuttrackerIfAny() {
+        if(this.inputIsForOuttracker()){
             Outtracker.takeInputText(this.inputStringWithoutTarget())
-        } else {
-            this.genericUserMessage.postMessage(input)
+            this.currentResponseStatus = Outtracker.getResponseStatus()
         }
+    }
+
+    triggerPostFromOuttrackerIfAny() {
+        if(this.inputIsForOuttracker()){
+            Outtracker.postResponse()
+        }
+    }
+
+    postUserMessage() {
+        this.genericUserMessage.postMessageWithStatus(
+            this.inputString, 
+            this.currentResponseStatus
+        )
     }
 
     inputIsForOuttracker(){

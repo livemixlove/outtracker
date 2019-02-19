@@ -1,4 +1,5 @@
-import OuttrackerTypes, { MESSAGE_STATUS_CODES, demoUserName, outtrackerUserName } from "./OuttakerActionTypes";
+import OuttrackerTypes, {demoUserName, outtrackerUserName } from "./OuttakerActionTypes";
+import { MESSAGE_STATUS_CODES } from "./OuttrackerTypes";
 
 export const resetStore = ( ) => {
     return {
