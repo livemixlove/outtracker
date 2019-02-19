@@ -6,11 +6,11 @@ From the project directory you should run:
 
 ### `npm install`
 
-After intall, to start the application, run:
+To start the application, run:
 
 ### `npm start`
 
-Installs and runs the app in the development mode.<br>
+This runs the app in the development mode.<br>
 Open [http://localhost:3050](http://localhost:3050) to view it in the browser.
 
 ### `npm test`
