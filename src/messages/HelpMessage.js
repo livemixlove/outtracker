@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 const helpItems = [
     { command: 'start', description: 'starts tracking an outage' },
@@ -30,3 +31,8 @@ const HelpItem = ({ command, description }) => (
         </div>
     </div>
 )
+
+HelpItem.propTypes = {
+    command: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+}
