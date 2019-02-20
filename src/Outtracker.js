@@ -1,7 +1,7 @@
 import HelloResponder from './responders/HelloResponder'
 import StartResponder from './responders/StartResponder'
 import BadCommandResponder from './responders/BadCommandResponder'
-import { MESSAGE_STATUS_CODES } from './OuttrackerTypes'
+import { MESSAGE_STATUS_CODES, outtrackerUserName } from './OuttrackerTypes'
 import store from './StoreSingleton'
 import RecordSingleResponder from './responders/RecordSingleResponder'
 import RecordResponder from './responders/RecordResponder'
@@ -26,12 +26,6 @@ class _Outtracker {
 
     // "public" methods
 
-    takeInputTextForRecording(input) {
-        if (store.getState().isRecordingAllInputs) {
-            store.dispatch(recordInputToOutage(input))
-        }
-    }
-
     takeCommand(input) {
         this.fullInput = input
         this.currentCommand = this.getCommandFromInputString(input)
@@ -50,6 +44,14 @@ class _Outtracker {
             }
         }
         if (!this.currentCommandExists || errorProcessingCommand) this.respondToBadCommand()
+    }
+
+    takeInputTextForRecording(input) {
+        if (store.getState().isRecordingAllInputs) {
+            if (!this.stringHasOuttrackerName(input)) {
+                store.dispatch(recordInputToOutage(input))
+            }
+        }
     }
 
     // "private" methods
@@ -82,6 +84,10 @@ class _Outtracker {
 
     getCommandFromInputString(input) {
         return input.trim().split(' ')[0]
+    }
+
+    stringHasOuttrackerName(string) {
+        return string.includes(`@${outtrackerUserName}`)
     }
 }
 
