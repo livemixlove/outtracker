@@ -4,7 +4,7 @@ const helpItems = [
     { command: 'start', description: 'starts tracking an outage' },
     { command: 'record "<message>"', description: 'records a message to an outage' },
     { command: 'start_recording', description: 'starts recording all input to an outage' },
-    { command: 'end_recording', description: 'stops recording input to an outage' },
+    { command: 'stop_recording', description: 'stops recording input to an outage' },
     { command: 'end', description: 'ends tracking an outage' },
 ]
 

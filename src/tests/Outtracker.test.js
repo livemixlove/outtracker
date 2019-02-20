@@ -77,7 +77,7 @@ describe('outage tracker', () => {
     })
 
     it('should end recording inputs', () => {
-        MessageRelayer.processMessage('@outtracker end_recording', demoUserName)
+        MessageRelayer.processMessage('@outtracker stop_recording', demoUserName)
         const endRecordMessage = ReactDOMServer.renderToString(<EndRecordMessage />)
         const mostRecentMessage = store.getState().messageHistory.last()
         expect(mostRecentMessage.text).toEqual(endRecordMessage)
