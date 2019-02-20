@@ -6,7 +6,7 @@ class StartRecordMessage extends Component {
             [
                 <p>outtracker is now in record mode.</p>,
                 <p>You can exit this mode by entering:</p>,
-                <p><strong>@outtracker end_record</strong></p>,
+                <p><strong>@outtracker end_recording</strong></p>,
             ]
         )
     }

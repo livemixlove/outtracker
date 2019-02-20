@@ -12,7 +12,7 @@ class EndRecordResponder extends OuttrackerResponder {
     responseStatus = MESSAGE_STATUS_CODES.SUCCESS
 
     getCommand() {
-        return 'end_record'
+        return 'end_recording'
     }
 
     performAction() {

@@ -15,7 +15,7 @@ class RecordResponder extends OuttrackerResponder {
     canRecord = false
 
     getCommand() {
-        return 'start_record'
+        return 'start_recording'
     }
 
     performAction() {

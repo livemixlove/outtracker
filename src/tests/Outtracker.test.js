@@ -59,7 +59,7 @@ describe('outage tracker', () => {
     })
 
     it('should start recording all submited inputs', () => {
-        MessageRelayer.processMessage('@outtracker start_record', demoUserName)
+        MessageRelayer.processMessage('@outtracker start_recording', demoUserName)
         const recordMessage = ReactDOMServer.renderToString(<StartRecordMessage />)
         const mostRecentMessage = store.getState().messageHistory.last()
         expect(mostRecentMessage.text).toEqual(recordMessage)
@@ -77,7 +77,7 @@ describe('outage tracker', () => {
     })
 
     it('should end recording inputs', () => {
-        MessageRelayer.processMessage('@outtracker end_record', demoUserName)
+        MessageRelayer.processMessage('@outtracker end_recording', demoUserName)
         const endRecordMessage = ReactDOMServer.renderToString(<EndRecordMessage />)
         const mostRecentMessage = store.getState().messageHistory.last()
         expect(mostRecentMessage.text).toEqual(endRecordMessage)
