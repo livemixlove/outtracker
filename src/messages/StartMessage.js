@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class StartMessage extends Component {
     render() {
@@ -9,5 +10,12 @@ class StartMessage extends Component {
         ])
     }
 }
+
+StartMessage.propTypes = {
+    outage: PropTypes.shape({
+        startTime: PropTypes.string.isRequired,
+    }).isRequired,
+}
+
 
 export default StartMessage

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class RecordSingleMessage extends Component {
     render() {
@@ -8,6 +9,10 @@ class RecordSingleMessage extends Component {
             <p><strong>Message: </strong>{text}</p>,
         ])
     }
+}
+
+RecordSingleMessage.propTypes = {
+    text: PropTypes.string.isRequired,
 }
 
 export default RecordSingleMessage
