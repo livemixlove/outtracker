@@ -6,8 +6,6 @@ import { MESSAGE_STATUS_CODES, outtrackerUserName } from './OuttrackerTypes'
 class _MessageRelayer {
     inputMessage = null
 
-    recipientName = null
-
     listenerFunctions = []
 
     recipient = null
