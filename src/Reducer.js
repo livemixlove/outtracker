@@ -81,7 +81,6 @@ const initialState = OuttrackerStateRecord({
 
 const RESET_STORE = () => initialState
 
-
 const handlers = {
     [OuttrackerActionTypes.ADD_MESSAGE_TO_CHAT_HISTORY]: ADD_MESSAGE_TO_CHAT_HISTORY,
     [OuttrackerActionTypes.RESET_STORE]: RESET_STORE,

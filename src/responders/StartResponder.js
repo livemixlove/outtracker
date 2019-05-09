@@ -28,6 +28,7 @@ class StartResponder extends OuttrackerResponder {
 
         if (store.getState().currentOutageId) {
             this.noMultipleWarning = true
+            this.responseStatus = MESSAGE_STATUS_CODES.FAILURE
         } else {
             store.dispatch(createOutage(this.outage))
         }
