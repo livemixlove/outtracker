@@ -8,7 +8,7 @@ import { MESSAGE_STATUS_CODES } from '../OuttrackerTypes'
 
 class BadCommandResponder extends OuttrackerResponder {
     responseStatus = MESSAGE_STATUS_CODES.FAILURE
-    
+
     // getCommand() {
     //     return '*'// doesn't do anything
     // }
